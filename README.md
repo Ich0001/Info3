@@ -1,5 +1,4 @@
 # Info3
-Repository für Informatik 3
+Repository fuer Informatik 3
 
-Hier müssten wir einen gemeinsamen Workspace erstellen können, auf dem wir alle arbeiten können.
-Änderung zu Testzwecken per Notepad++.
+Hier muessten wir einen gemeinsamen Workspace erstellen koennen, auf dem wir alle arbeiten koennen.
