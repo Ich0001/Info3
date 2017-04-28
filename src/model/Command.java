@@ -1,7 +1,7 @@
 /**
 * exercise sheet: 1
 * exercise      : 2
-* operating time: 12.00 - 
+* operating time: 12.00 - 13.30
 * annotations: 
 *  * 
 *

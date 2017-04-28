@@ -14,22 +14,27 @@ package model;
 import hsrt.mec.controldeveloper.core.com.command.IDirection;
 
 public class Direction extends Command implements IDirection {
-
+	//attribute
 	private int degree;
 	
+	//constructors
 	public Direction() {
-		// TODO Auto-generated constructor stub
+		degree = 0;
+	}
+	public Direction(int degree) {
+		this.degree = degree;
 	}
 	
+	//other methods
 	public void setDegree(int degree){
-		
+		this.degree = degree;
 	}
 	public int getDegree(){
 		return degree;
 	}
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		String s = "degree: " + String.valueOf(degree);
+		return s;
 	}
 	
 	

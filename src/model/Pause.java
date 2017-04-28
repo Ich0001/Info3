@@ -14,12 +14,18 @@ package model;
 import hsrt.mec.controldeveloper.core.com.command.IPause;
 
 public class Pause extends Command implements IPause {
-
+	//attributes
 	private double duration;
 	
+	//constructors
 	public Pause() {
-		// TODO Auto-generated constructor stub
+		duration = 0;
 	}
+	public Pause(double duration) {
+		this.duration = duration;
+	}
+	
+	//other methods
 	public void setDuration(double duration){
 		this.duration = duration;
 	}
@@ -28,8 +34,8 @@ public class Pause extends Command implements IPause {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		String s = "duration: " + String.valueOf(duration);
+		return s;
 	}
 
 }

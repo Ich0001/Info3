@@ -14,13 +14,21 @@ package model;
 import hsrt.mec.controldeveloper.core.com.command.IGear;
 
 public class Gear extends Command implements IGear {
-
+	//attribute
 	private int speed;
 	private double duration;
 	
+	//constructors
 	public Gear() {
-		// TODO Auto-generated constructor stub
+		speed = 0;
+		duration = 0;
 	}
+	public Gear(int speed, double duration) {
+		this.speed = speed;
+		this.duration = duration;
+	}
+	
+	//other methods
 	public void setSpeed(int speed){
 		this.speed = speed;
 	}
@@ -34,8 +42,9 @@ public class Gear extends Command implements IGear {
 		return duration;
 	}
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		String s = String.valueOf(speed);
+		String p = String.valueOf(duration);
+		return ("speed: "+s+"   duration: "+p);
 	}
 	
 }

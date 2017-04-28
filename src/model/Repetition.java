@@ -14,13 +14,21 @@ package model;
 import hsrt.mec.controldeveloper.core.com.command.IRepetition;
 
 public class Repetition extends Command implements IRepetition {
-
+	//attributes
 	private int nrSteps;
 	private int nrRepetitions;
 	
+	//constructors
 	public Repetition() {
-		// TODO Auto-generated constructor stub
+		nrSteps = 0;
+		nrRepetitions = 0;
 	}
+	public Repetition(int nrSteps, int nrRepetitions) {
+		this.nrSteps = nrSteps;
+		this.nrRepetitions = nrRepetitions;
+	}
+	
+	//other methods
 	public void setNrSteps(int nrSteps){
 		this.nrSteps = nrSteps;
 	}
@@ -35,8 +43,9 @@ public class Repetition extends Command implements IRepetition {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		String s = String.valueOf(nrSteps);
+		String p = String.valueOf(nrRepetitions);
+		return ("nrSteps: "+s+"   nrRepetitions: "+p);
 	}
 
 }
