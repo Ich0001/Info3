@@ -32,9 +32,9 @@ public class Direction extends Command implements IDirection {
 	public int getDegree(){
 		return degree;
 	}
+	@Override
 	public String toString() {
-		String s = "degree: " + String.valueOf(degree);
-		return s;
+		return "Direction [degree=" + degree + "]";
 	}
 	
 	
