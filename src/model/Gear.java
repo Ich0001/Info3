@@ -41,9 +41,10 @@ public class Gear extends Command implements IGear {
 	public double getDuration(){
 		return duration;
 	}
-	@Override
 	public String toString() {
-		return "Gear [speed=" + speed + ", duration=" + duration + "]";
+		String s = String.valueOf(speed);
+		String p = String.valueOf(duration);
+		return ("speed: "+s+"   duration: "+p);
 	}
 	
 }
