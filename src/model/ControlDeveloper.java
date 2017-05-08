@@ -20,10 +20,7 @@ public class ControlDeveloper {
 	
 	//methods
 	public static void main(String[] args) {
-		/**
-		 * exercise 1
-		 *  static erzeugt kein Objekt und lässt sich mit static getName und name printen
-		 */
+		//exercise 1
 		//System.out.println(name);
 		//System.out.println(getName());
 		
@@ -31,38 +28,6 @@ public class ControlDeveloper {
 		ControlDeveloper controlDeveloper1 = new ControlDeveloper();
 		controlDeveloper1.testCommands();
 		controlDeveloper1.printCommands();
-		
-		//exercise 4
-		CommandList commandList = new CommandList();
-		commandList.add(controlDeveloper1.commands[0]);
-		commandList.add(controlDeveloper1.commands[1]);
-		commandList.add(controlDeveloper1.commands[2]);
-		commandList.add(controlDeveloper1.commands[3]);
-		
-//		commandList.add(controlDeveloper1.commands[1]);
-//		commandList.add(new Direction(45));
-//		commandList.remove(3);
-// 		commandList.moveUp(-2);
-// 		commandList.moveDown(5);
- 		
-//		System.out.println();
-//		for (int i = 0; i<6; i++ )
-//			System.out.println(commandList.get(i));
- 		
- 		commandList.moveUp(2);
- 		
-//		System.out.println();
-//		for (int i = 0; i<6; i++ )
-//			System.out.println(commandList.get(i));
- 		
- 		
- 		commandList.moveDown(2);
-// 		commandList.remove(4);
-
-		System.out.println();
-		for (int i = 0; i<6; i++ )
-			System.out.println(commandList.get(i));
-		
 	}
 	
 	public static String getName(){

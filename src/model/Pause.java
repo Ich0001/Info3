@@ -32,10 +32,10 @@ public class Pause extends Command implements IPause {
 	public double getDuration(){
 		return duration;
 	}
-	
 	@Override
 	public String toString() {
-		return "Pause [duration=" + duration + "]";
+		String s = "duration: " + String.valueOf(duration);
+		return s;
 	}
 
 }

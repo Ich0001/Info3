@@ -10,26 +10,15 @@
 */
 
 package model;
-/**
- * @see ICommand Klasse 
- */
+
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 public abstract class Command implements ICommand {
 	private String name;
 
-	
-	/**
-	 * @exception getName von String name
-	 * @return name
-	 */
 	public String getName(){
 		return name;
 	}
 	
-	/**
-	 * @exception	abstract von Abstakten Klassen existieren keine Objekte 
-	 * 
-	 */
 	public abstract String toString();
 }
