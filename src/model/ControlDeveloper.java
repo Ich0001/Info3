@@ -20,14 +20,10 @@ public class ControlDeveloper {
 	
 	//methods
 	public static void main(String[] args) {
-<<<<<<< HEAD
 		/**	@exception 	exercise 1  Die ersten Schritte
 		 * 				static erzeugt kein Objekt und lässt sich mit static getName und Attribut "String name" printen
 		 * 				Statische Methoden und Variablen benötigen keinerlei Instanzen einer Klasse, um aufgerufen zu werden
 		 *  @author 	Lukas Erkert */
-=======
-		//exercise 1
->>>>>>> origin/master
 		//System.out.println(name);
 		//System.out.println(getName());
 		
@@ -37,8 +33,7 @@ public class ControlDeveloper {
 		ControlDeveloper controlDeveloper1 = new ControlDeveloper();
 		controlDeveloper1.testCommands();
 		controlDeveloper1.printCommands();
-<<<<<<< HEAD
-		
+	
 		/**	@exception 	exercise 4 Verkettete Liste 
 		 * 				Objekt commandList wird angelegt
 		 * 				Mittels add wird ein Array in der Klasse CommandList angelegt 
@@ -73,9 +68,6 @@ public class ControlDeveloper {
 		System.out.println();
 		for (int i = 0; i<6; i++ )
 			System.out.println(commandList.get(i));
-		
-=======
->>>>>>> origin/master
 	}
 	/**@exception 	static String benötigt man um auf static name zuzugreifen da diese nur in der Klasse sichbar ist
 	 * @return 		name
