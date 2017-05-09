@@ -41,11 +41,11 @@ public class Repetition extends Command implements IRepetition {
 	public int getNrRepetitions(){
 		return nrRepetitions;
 	}
-
 	@Override
 	public String toString() {
-		return "Repetition [nrSteps=" + nrSteps + ", nrRepetitions=" + nrRepetitions + "]";
+		String s = String.valueOf(nrSteps);
+		String p = String.valueOf(nrRepetitions);
+		return ("nrSteps: "+s+"   nrRepetitions: "+p);
 	}
-	
 
 }
