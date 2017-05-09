@@ -91,7 +91,8 @@ public class Repetition extends Command implements IRepetition {
 	@Override // String toString() von dem abstract Methode in Command
 
 	public String toString() {
-		return "Repetition [nrSteps=" + nrSteps + ", nrRepetitions=" + nrRepetitions + "]";
+		return "Repetition [nrSteps=" + nrSteps + ", nrRepetitions="
+				+ nrRepetitions + "]";
 	}
 
 }

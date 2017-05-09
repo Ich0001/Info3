@@ -1,12 +1,12 @@
 package model;
 
 /**
-* exercise sheet: 1
-* exercise      : 4
-* @author Jonathan Pfrommer, Lukas Erkert, Aabed Solayman
-* @author Aabed Solayman: JavaDoc
-* @version 1.0
-*/
+ * exercise sheet: 1
+ * exercise      : 4
+ * @author Jonathan Pfrommer, Lukas Erkert, Aabed Solayman
+ * @author Aabed Solayman: JavaDoc
+ * @version 1.0
+ */
 /**
  * Klasse Element ist der Kern der Verketette Liste. Mit Klasse Element werden
  * die Elemente bearbeitet. Jedes Element der Verketette Liste zeigt auf das
@@ -46,8 +46,8 @@ public class Element {
 	}
 
 	/**
-	 * @param next:
-	 *            das nächste element einsetzen :Verkapselung Methode
+	 * @param next
+	 *            : das nächste element einsetzen :Verkapselung Methode
 	 */
 	public void setNext(Element next) {
 		this.next = next;
@@ -61,8 +61,8 @@ public class Element {
 	}
 
 	/**
-	 * @param prev:
-	 *            das vorheriges Element einsetzen :Verkapselung Methode
+	 * @param prev
+	 *            : das vorheriges Element einsetzen :Verkapselung Methode
 	 */
 	public void setPrev(Element prev) {
 		this.prev = prev;
