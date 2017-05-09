@@ -6,6 +6,7 @@
 *  * 
 *
 * @author Jonathan Pfrommer (Aabed Solayman)
+* @author Aabed Solayman: JavaDoc
 * @version 1.0
 */
 
@@ -13,39 +14,84 @@ package model;
 
 import hsrt.mec.controldeveloper.core.com.command.IRepetition;
 
+/**
+ * Die Klasse Repetition zeigt die Zahl der Steps und die Zahl der Repetitionen.
+ * 
+ * @see Command (Superklasse)
+ * @see IRepetition (Interface): von dem werden die Methoden getNrSteps() und
+ *      int getNrRepetitions() in Klasse Repetition übergeschrieben.
+ */
 public class Repetition extends Command implements IRepetition {
-	//attributes
+	// attributes
 	private int nrSteps;
 	private int nrRepetitions;
-	
-	//constructors
+
+	/**
+	 * Repetition Standardkonstruktor: Die Attribute werden am Anfang gleich
+	 * NULL eingesetzet
+	 */
 	public Repetition() {
 		nrSteps = 0;
 		nrRepetitions = 0;
 	}
+
+	/**
+	 * 
+	 * @param nrSteps
+	 *            die Zahl der Steps einsetzen
+	 * @param nrRepetitions
+	 *            die Zahl der Repetitionen einsetzen
+	 */
 	public Repetition(int nrSteps, int nrRepetitions) {
 		this.nrSteps = nrSteps;
 		this.nrRepetitions = nrRepetitions;
 	}
-	
-	//other methods
-	public void setNrSteps(int nrSteps){
+
+	/**
+	 * @param nrSteps:Verkapselung
+	 *            Methode
+	 */
+	public void setNrSteps(int nrSteps) {
 		this.nrSteps = nrSteps;
 	}
-	public int getNrSteps(){
+
+	/**
+	 * 
+	 * @see IRepetition
+	 */
+	@Override // getNrSteps() von dem Interface IRepetition
+
+	public int getNrSteps() {
 		return nrSteps;
 	}
-	public void setNrRepetitions(int nrRepetitions){
+
+	/**
+	 * @param nrRepetitions:Verkapselung
+	 *            Methode
+	 */
+	public void setNrRepetitions(int nrRepetitions) {
 		this.nrRepetitions = nrRepetitions;
 	}
-	public int getNrRepetitions(){
+
+	/**
+	 * 
+	 * 
+	 * @see IRepetition
+	 */
+	@Override // getNrRepetitions() von dem Interface IRepetition
+	public int getNrRepetitions() {
 		return nrRepetitions;
+
 	}
-	@Override
+
+	/**
+	 * 
+	 * @return String ( nrSteps und nrRepetitions)
+	 */
+	@Override // String toString() von dem abstract Methode in Command
+
 	public String toString() {
-		String s = String.valueOf(nrSteps);
-		String p = String.valueOf(nrRepetitions);
-		return ("nrSteps: "+s+"   nrRepetitions: "+p);
+		return "Repetition [nrSteps=" + nrSteps + ", nrRepetitions=" + nrRepetitions + "]";
 	}
 
 }
