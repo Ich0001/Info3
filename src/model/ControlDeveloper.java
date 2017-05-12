@@ -64,13 +64,13 @@ public class ControlDeveloper {
 		// commandList.add(controlDeveloper1.commands[1]);
 		// commandList.add(controlDeveloper1.commands[2]);
 		// commandList.add(controlDeveloper1.commands[3]);
-
+		//
 		// commandList.add(controlDeveloper1.commands[1]);
 		// commandList.add(new Direction(45));
 		// commandList.remove(3);
 		// commandList.moveUp(-2);
 		// commandList.moveDown(5);
-
+		//
 		// System.out.println();
 		// for (int i = 0; i<6; i++ )
 		// System.out.println(commandList.get(i));
@@ -92,10 +92,12 @@ public class ControlDeveloper {
 	/**
 	 * 
 	 * static String getName gibt den Namen der Klasse wieder.
+	 * 
 	 * @return name
 	 * @author Lukas Erkert
 	 */
-	//static String benötigt man um auf static name zuzugreifen da diese nur in der Klasse sichbar ist
+	// static String benötigt man um auf static name zuzugreifen da diese nur in
+	// der Klasse sichbar ist
 	public static String getName() {
 		return name;
 	}
@@ -111,7 +113,8 @@ public class ControlDeveloper {
 	}
 
 	/**
-	 * Array [3] 0-3 wird angelegt das man nicht immer nochmal schreiben muss (Für Aufgabe 3)
+	 * Array [3] 0-3 wird angelegt das man nicht immer nochmal schreiben muss
+	 * (Für Aufgabe 3)
 	 * 
 	 * @author Lukas Erkert
 	 */
