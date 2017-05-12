@@ -1,15 +1,24 @@
 package model;
 
+/**
+ * Ein Objekt der Klasse CommandList beschreibt eine verkettete Liste. Mit ihren
+ * Methoden kann die verkettete Liste bearbeitet werden (hinzufügen, löschen,
+ * verschieben hoch/hinunter, holen). In ihr wird der Anker der verketteten
+ * Liste gespeichert.
+ * 
+ * @author Jonathan
+ */
 public class CommandList {
 	private Element root = null;
 
 	/**
-	 * @exception add
-	 *                einen neuen Command der in einer verketteten Liste
-	 *                gespeichert wird wenn erster add dann auf den Anker neues
-	 *                Objekt legen Anschließend geht man die Liste solange durch
-	 *                bis man zu "NULL" angekommen ist und überschreibt diese
-	 *                mit dem Wert/String
+	 * add: Fügt einen neuen Command ein, der in einer verketteten Liste
+	 * gespeichert wird, wenn der erste add erfolgt, dann wird auf den Anker
+	 * neues Objekt gelegt und anschließend geht man die Liste solange durch bis
+	 * man bei "NULL" angekommen ist und überschreibt diese mit dem Command.
+	 * 
+	 * @see Command
+	 * 
 	 * @param c
 	 *            Befehl was man für die add Funktion benötigt
 	 * @return true für Bool--> das erfolgreich
@@ -32,15 +41,8 @@ public class CommandList {
 	}
 
 	/**
-	 * @exception remove
-	 *                einen Command der aus einer verketteten Liste gelöscht
-	 *                wird verschiedene Bedinungen werden abgearbeitet: - man
-	 *                keine Stelle die negativ ist löschen - wenn das erste
-	 *                Element gelöscht wird müssen die Zeiger so gelegt werden
-	 *                das der Anker auf dieses Objekt zeigt - sonst wird die
-	 *                Stelle an dem gelöscht werden soll aufgerufen und die
-	 *                zeiger neu verlegt --> Das voherige Element wird auf das
-	 *                nachfolgende Element gelegt des gelöschten Element gelegt
+	 * remove: Löscht einen Command aus der verketteten Liste.
+	 * 
 	 * @param c
 	 *            an Stelle int c
 	 * @return true für Bool--> das erfolgreich
@@ -69,12 +71,12 @@ public class CommandList {
 	}
 
 	/**
-	 * @exception get
-	 *                die Position für das Command geht die verkettete Liste
-	 *                solange durch, bis Parameter pos erreicht wird
+	 * get: Die Methode gibt das Command zurück, das in der vertetteten Liste an
+	 * der übergebenen Stelle steht.
+	 * 
 	 * @param pos
 	 *            int Zahl für Position
-	 * @return element
+	 * @return Element
 	 * @author Lukas Erkert
 	 */
 	public Command get(int pos) {
@@ -91,50 +93,43 @@ public class CommandList {
 	}
 
 	/**
-	 * @exception moveUp
-	 *                die verkettete List an der Stelle x um eins nach oben
-	 *                verchieben Idee dahinter das es die gleiche Mehtode
-	 *                aufruft wie in MoveDown nur das es das nächste Element
-	 *                nimmt --> hat den Effekt das es statt das Element
-	 *                MoveDown, MoveUp macht
+	 * moveDown: Verschiebt das Element an der Stelle x aus der verketteten
+	 * Liste um eins nach unten.
+	 * 
 	 * @param x
 	 *            Position des Commands
-	 * @return true für Bool--> das erfolgreich
+	 * @return true wenn Tauschen erfolgreich war
+	 * @return false wenn Tauschen nicht erfolgreich war
 	 * @author Lukas Erkert
 	 */
-
-	public boolean moveUp(int x) {
+	public boolean moveDown(int x) {
 
 		// if(hilfsElement.getNext() == null)
 		// return false;
 
-		moveDown(x + 1);
-		return true;
+		if (moveUp(x + 1))
+			return true;
+		else
+			return false;
 	}
 
 	/**
-	 * @exception moveDown
-	 *                : die verkettete List an der Stelle x um eins nach unten
-	 *                verschieben - wenn die Position des Commands kleiner als
-	 *                oder gleich null dann funktioniert das nicht weil man
-	 *                nicht unter der Anker verschiben kann - das voherige
-	 *                voherige Element des zu verschiebene Element zeigt auf das
-	 *                eigentliche Element - das eigentliche Element zeigt auf
-	 *                das voherige Element - das voherige Element zeigt auf das
-	 *                nächste Element --> und anderstrum für doppelt verkette
-	 *                Liste
+	 * moveDown: Verschiebt das Element an der Stelle x aus der verketteten
+	 * Liste um eins nach oben.
+	 * 
 	 * @param x
 	 *            Position des Commands
-	 * @return true für Bool--> das erfolgreich
+	 * @return true wenn Tauschen erfolgreich war
+	 * @return false wenn Tauschen nicht erfolgreich war
 	 * @author Lukas Erkert
 	 */
-	public boolean moveDown(int x) {
+	public boolean moveUp(int x) {
 		if (root == null || x <= 0)
-			return false;
+			return false; // Wenn Zahl negativ ist
 		Element hilfsElement = root;
 		for (int i = 0; i < x; i++) {
 			hilfsElement = hilfsElement.getNext();
-			if (hilfsElement == null)
+			if (hilfsElement == null) // letze Position
 				return false;
 		}
 		Element next = hilfsElement.getNext();

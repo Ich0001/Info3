@@ -36,7 +36,7 @@ public class Repetition extends Command implements IRepetition {
 	}
 
 	/**
-	 * 
+	 * Konstruktor setzt nrSteps und nrRepetitions auf die übergebenen Parameter
 	 * @param nrSteps
 	 *            die Zahl der Steps einsetzen
 	 * @param nrRepetitions
@@ -47,7 +47,7 @@ public class Repetition extends Command implements IRepetition {
 		this.nrRepetitions = nrRepetitions;
 	}
 
-	/**
+	/**set-Methode setzt nrSteps
 	 * @param nrSteps:Verkapselung
 	 *            Methode
 	 */
@@ -56,7 +56,7 @@ public class Repetition extends Command implements IRepetition {
 	}
 
 	/**
-	 * 
+	 * get-Methode gibt nrSteps zurück
 	 * @see IRepetition
 	 */
 	@Override // getNrSteps() von dem Interface IRepetition
@@ -65,7 +65,7 @@ public class Repetition extends Command implements IRepetition {
 		return nrSteps;
 	}
 
-	/**
+	/**set-Methode setzt nrRepetitions
 	 * @param nrRepetitions:Verkapselung
 	 *            Methode
 	 */
@@ -74,7 +74,7 @@ public class Repetition extends Command implements IRepetition {
 	}
 
 	/**
-	 * 
+	 * get-Methode gibt nrRepetitions zurück
 	 * 
 	 * @see IRepetition
 	 */
@@ -85,8 +85,8 @@ public class Repetition extends Command implements IRepetition {
 	}
 
 	/**
-	 * 
-	 * @return String ( nrSteps und nrRepetitions)
+	 * toString-Methode für das jeweilige Objekt.
+	 * @return Gibt String wie folgt zurück: Repetitions [nrSteps=<nrSteps>, nrRepetitions=<nrRepetitions>]
 	 */
 	@Override // String toString() von dem abstract Methode in Command
 

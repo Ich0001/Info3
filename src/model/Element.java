@@ -12,6 +12,7 @@ package model;
  * die Elemente bearbeitet. Jedes Element der Verketette Liste zeigt auf das
  * nächste Element und auf das vorherige Element.
  * 
+ * @see CommandList
  */
 public class Element {
 
@@ -31,14 +32,18 @@ public class Element {
 	}
 
 	/**
-	 * @return element :Verkapselung Methode
+	 * get-Methode von Element
+	 * 
+	 * @return element Verkapselung Methode
 	 */
 	public Command getElement() {
 		return element;
 	}
 
 	/**
-	 * @return next: das nächste element :Verkapselung Methode
+	 * Gibt das nächste Element zurück
+	 * 
+	 * @return next das nächste element :Verkapselung Methode
 	 */
 
 	public Element getNext() {
@@ -46,23 +51,29 @@ public class Element {
 	}
 
 	/**
+	 * set-Methode setzt das nächste Element
+	 * 
 	 * @param next
-	 *            : das nächste element einsetzen :Verkapselung Methode
+	 *            das nächste element einsetzen :Verkapselung Methode
 	 */
 	public void setNext(Element next) {
 		this.next = next;
 	}
 
 	/**
-	 * @return prev: das vorheriges Element :Verkapselung Methode
+	 * Gibt das vorherige Element zurück
+	 * 
+	 * @return prev das vorheriges Element :Verkapselung Methode
 	 */
 	public Element getPrev() {
 		return prev;
 	}
 
 	/**
+	 * set-Methode setzt das vorherige Element
+	 * 
 	 * @param prev
-	 *            : das vorheriges Element einsetzen :Verkapselung Methode
+	 *            das vorheriges Element einsetzen :Verkapselung Methode
 	 */
 	public void setPrev(Element prev) {
 		this.prev = prev;
