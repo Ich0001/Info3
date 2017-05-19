@@ -11,6 +11,10 @@
 
 package model;
 
+import java.io.File;
+
+//import java.util.Vector;
+
 /**
  * Die Klasse ControlDeveloper enthält vorallem die main-Methode des Programms.
  * 
@@ -29,6 +33,9 @@ public class ControlDeveloper {
 													// erzeugen?
 
 	// methods
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		/**
 		 * exercise 1 Die ersten Schritte static erzeugt kein Objekt und lässt
@@ -86,6 +93,25 @@ public class ControlDeveloper {
 		// for (int i = 0; i < 6; i++)
 		// System.out.println(commandList.get(i));
 
+		/**
+		 * Aufgabenblatt 2
+		 * 
+		 */
+		ControlModel controlModel = ControlModel.getInstance();
+		controlModel.createCommandTypes();
+		controlModel.getControlProcess().add(new Gear(5, .5));
+		controlModel.getControlProcess().add(new Pause(2));
+		ControlDeveloper controlDeveloper1 = new ControlDeveloper();
+		controlDeveloper1.testCommands();
+		controlModel.getControlProcess().add(controlDeveloper1.commands[0]);
+		controlModel.getControlProcess().add(controlDeveloper1.commands[1]);
+		controlModel.getControlProcess().add(controlDeveloper1.commands[2]);
+		controlModel.getControlProcess().add(controlDeveloper1.commands[3]);
+		controlModel.save(new File(System.getProperty("user.dir")
+				+ "\\CommandList.txt")); // Befehl: Speichere meine verkettete
+											// Liste ab.
+		controlModel.load(new File(System.getProperty("user.dir")
+				+ "\\CommandList.txt"));
 	}
 
 	//
@@ -97,7 +123,7 @@ public class ControlDeveloper {
 	 * @author Lukas Erkert
 	 */
 	// static String benötigt man um auf static name zuzugreifen da diese nur in
-	// der Klasse sichbar ist
+	// der Klasse sichtbar ist
 	public static String getName() {
 		return name;
 	}
