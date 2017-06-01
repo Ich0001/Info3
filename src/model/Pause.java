@@ -17,7 +17,8 @@ import hsrt.mec.controldeveloper.core.com.command.IPause;
  * Die Klasse "Pause" ist eine von "Command" abgeleitete Klasse, die "IPause"
  * implementiert.
  * 
- * @see Command, IPause
+ * @see model.Command
+ * @see hsrt.mec.controldeveloper.core.com.command.IPause
  */
 public class Pause extends Command implements IPause {
 	// attributes
@@ -65,10 +66,10 @@ public class Pause extends Command implements IPause {
 	/**
 	 * toString-Methode für das jeweilige Objekt.
 	 * 
-	 * @return Gibt String wie folgt zurück: Pause [duration=<duration>]
+	 * @return Gibt String wie folgt zurück: Pause duration [duration]
 	 */
 	@Override
 	public String toString() {
-		return "Pause [duration=" + duration + "]";
+		return "Pause duration " + duration;
 	}
 }

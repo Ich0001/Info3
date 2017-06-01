@@ -21,7 +21,7 @@ public class CommandList {
 	 * 
 	 * @param c
 	 *            Befehl was man für die add Funktion benötigt
-	 * @return true für Bool--> das erfolgreich
+	 * @return true für Bool (erfolgreich)
 	 * @author Lukas Erkert
 	 */
 	public boolean add(Command c) {
@@ -45,7 +45,7 @@ public class CommandList {
 	 * 
 	 * @param c
 	 *            an Stelle int c
-	 * @return true für Bool--> das erfolgreich
+	 * @return true für Bool (erfolgreich)
 	 * @author Lukas Erkert
 	 */
 	public boolean remove(int c) {

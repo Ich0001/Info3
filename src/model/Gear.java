@@ -17,7 +17,8 @@ import hsrt.mec.controldeveloper.core.com.command.IGear;
  * Die Klasse "Gear" ist eine von "Command" abgeleitete Klasse, die "IGear"
  * implementiert.
  * 
- * @see Command, IGear
+ * @see Command
+ * @see IGear
  */
 public class Gear extends Command implements IGear {
 	// attribute
@@ -90,11 +91,11 @@ public class Gear extends Command implements IGear {
 	/**
 	 * toString-Methode für das jeweilige Objekt.
 	 * 
-	 * @return Gibt String wie folgt zurück: Gear [speed=<speed>,
-	 *         duration=<duration>]
+	 * @return Gibt String wie folgt zurück: Gear speed [speed] duration
+	 *         [duration]
 	 */
 	@Override
 	public String toString() {
-		return "Gear [speed=" + speed + ", duration=" + duration + "]";
+		return "Gear speed " + speed + " duration " + duration;
 	}
 }

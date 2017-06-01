@@ -35,6 +35,7 @@ public class ControlDeveloper {
 	// methods
 	/**
 	 * @param args
+	 *            wird nicht verwendet
 	 */
 	public static void main(String[] args) {
 		/**
@@ -99,24 +100,25 @@ public class ControlDeveloper {
 		 */
 		ControlModel controlModel = ControlModel.getInstance();
 		controlModel.createCommandTypes();
-		controlModel.getControlProcess().add(new Gear(5, .5));
-		controlModel.getControlProcess().add(new Pause(2));
-		ControlDeveloper controlDeveloper1 = new ControlDeveloper();
-		controlDeveloper1.testCommands();
-		controlModel.getControlProcess().add(controlDeveloper1.commands[0]);
-		controlModel.getControlProcess().add(controlDeveloper1.commands[1]);
-		controlModel.getControlProcess().add(controlDeveloper1.commands[2]);
-		controlModel.getControlProcess().add(controlDeveloper1.commands[3]);
-		controlModel.save(new File(System.getProperty("user.dir")
-				+ "\\CommandList.txt")); // Befehl: Speichere meine verkettete
-											// Liste ab.
+		// controlModel.getControlProcess().add(new Gear(5, .5));
+		// controlModel.getControlProcess().add(new Pause(2));
+		// ControlDeveloper controlDeveloper1 = new ControlDeveloper();
+		// controlDeveloper1.testCommands();
+		// controlModel.getControlProcess().add(controlDeveloper1.commands[0]);
+		// controlModel.getControlProcess().add(controlDeveloper1.commands[1]);
+		// controlModel.getControlProcess().add(controlDeveloper1.commands[2]);
+		// controlModel.getControlProcess().add(controlDeveloper1.commands[3]);
+		// controlModel.save(new File(System.getProperty("user.dir")
+		// + "\\CommandList.txt")); // Befehl: Speichere meine verkettete
+		// // Liste ab.
 		controlModel.load(new File(System.getProperty("user.dir")
 				+ "\\CommandList.txt"));
+		// controlModel.save(new File(System.getProperty("user.dir")
+		// + "\\CommandList.txt"));
 	}
 
 	//
 	/**
-	 * 
 	 * static String getName gibt den Namen der Klasse wieder.
 	 * 
 	 * @return name
@@ -132,6 +134,7 @@ public class ControlDeveloper {
 	 * Setzt den String von name, dass er aufgerufen werden kann.
 	 * 
 	 * @param newName
+	 *            Neuer Klassenname
 	 * @author Lukas Erkert
 	 */
 	public static void setName(String newName) {
@@ -139,7 +142,7 @@ public class ControlDeveloper {
 	}
 
 	/**
-	 * Array [3] 0-3 wird angelegt das man nicht immer nochmal schreiben muss
+	 * Array [4] 0-3 wird angelegt das man nicht immer nochmal schreiben muss
 	 * (Für Aufgabe 3)
 	 * 
 	 * @author Lukas Erkert

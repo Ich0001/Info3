@@ -24,7 +24,7 @@ import hsrt.mec.controldeveloper.io.TextFile;
 /**
  * Zentralverwaltung
  * 
- * @author Jonathan
+ * @author Jonathan, Aabed
  *
  */
 public class ControlModel {
@@ -62,10 +62,16 @@ public class ControlModel {
 	}
 
 	/**
-	 * TODO
+	 * Die Methode load Laedt aus einem Dokument (Textfile) Anweisungen, die es
+	 * in der verketteten Liste abspeichert.
 	 * 
 	 * @param file
-	 * @return
+	 *            Hier muss ein Objekt vom Typ File übergeben werden. Zum
+	 *            Beispiel: new File(System.getProperty("user.dir") +
+	 *            "\\CommandList.txt"). Aus dieser Datei wird geladen.
+	 * @see File
+	 * @return Boole'scher Wert der angibt, ob die Datei, aus der gelesen wird,
+	 *         leer ist (false) oder ob das lesen geklappt hat (true).
 	 */
 	public boolean load(File file) {
 		Vector<String> vektor = new Vector<String>();
@@ -77,20 +83,51 @@ public class ControlModel {
 			return false;
 		// Ausgeben des eingelesenen Textfiles in der Konsole
 		System.out.println(vektor);
+
+		// Speichern des eingelesenen Textfiles in der verketteten Liste
+		CommandType newInstance = new CommandType();
+		for (String s : vektor) {
+			System.out.println(s);
+			String[] zeile = s.split(" ");
+			newInstance.setName(zeile[0]);
+			Command command = newInstance.createInctance();
+			// System.out.println("-->"+command.getName());
+			if (command instanceof Direction)
+				((Direction) command).setDegree(Integer.parseInt(zeile[2]));
+			else if (command instanceof Gear) {
+				((Gear) command).setSpeed(Integer.parseInt(zeile[2]));
+				((Gear) command).setDuration(Double.parseDouble(zeile[4]));
+			} else if (command instanceof Repetition) {
+				((Repetition) command).setNrSteps(Integer.parseInt(zeile[2]));
+				((Repetition) command).setNrRepetitions(Integer
+						.parseInt(zeile[4]));
+			} else if (command instanceof Pause)
+				((Pause) command).setDuration(Double.parseDouble(zeile[2]));
+			else
+				System.out.println("Hat nicht geklappt!");
+			controlProcess.add(command);
+		}
 		return true;
 	}
 
 	/**
-	 * TODO
+	 * Die Methode save speichert Anweisungen aus der verketteten Liste in einer
+	 * Textdatei ab und gibt sie ueber die Konsole aus.
 	 * 
 	 * @param file
-	 * @return
+	 *            Hier muss ein Objekt vom Typ File übergeben werden. Zum
+	 *            Beispiel: new File(System.getProperty("user.dir") +
+	 *            "\\CommandList.txt") In diese Datei wird gespeichert.
+	 * @return Boole'scher Wert der angibt, ob etwas abgespeichert wurde. True
+	 *         wenn etwas abgespeichert werden konnte und false wenn die
+	 *         verkettete Liste leer ist.
 	 */
 	public boolean save(File file) {
 		// Vektor erstellen und verkettete Liste als Strings in Vektor
 		// schreiben.
 		Vector<String> vektor = new Vector<String>();
-		if (getControlProcess().get(0) == null)
+		if (getControlProcess().get(0) == null) // Wenn verkettete Liste leer
+												// ist.
 			return false;
 		int i = 0;
 		while (getControlProcess().get(i) != null) {

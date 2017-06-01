@@ -1,0 +1,6 @@
+Gear speed 5 duration 0.5
+Pause duration 2.0
+Direction degree 30
+Gear speed 70 duration 0.2
+Repetition nrSteps 4 nrRepetitions 9
+Pause duration 100.1

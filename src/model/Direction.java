@@ -17,7 +17,8 @@ import hsrt.mec.controldeveloper.core.com.command.IDirection;
  * Die Klasse "Direction" ist eine von "Command" abgeleitete Klasse, die
  * "IDirection" implementiert.
  * 
- * @see Command, IDirection
+ * @see model.Command
+ * @see hsrt.mec.controldeveloper.core.com.command.IDirection
  */
 public class Direction extends Command implements IDirection {
 	// attribute
@@ -65,10 +66,10 @@ public class Direction extends Command implements IDirection {
 	/**
 	 * toString-Methode für das jeweilige Objekt.
 	 * 
-	 * @return Gibt String wie folgt zurück: Direction [degree=<degree>]
+	 * @return Gibt String wie folgt zurück: Direction degree [degree]
 	 */
 	@Override
 	public String toString() {
-		return "Direction [degree=" + degree + "]";
+		return "Direction degree " + degree;
 	}
 }

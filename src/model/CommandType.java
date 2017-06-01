@@ -24,14 +24,15 @@ public class CommandType {
 	private String name;
 
 	/**
-	 * Standardkontruktor: Setzt auf name einen leeren String
+	 * Standardkontruktor: Setzt auf name einen leeren String.
 	 */
 	public CommandType() {
 		name = "";
 	}
 
 	/**
-	 * Konstruktor: Setzt auf name den uebergebenen String.
+	 * Konstruktor: Setzt auf name den uebergebenen String. Der String wird
+	 * zuvor auf Richtigkeit geprueft.
 	 *
 	 * @param name
 	 *            setzt die Instanzvariable wenn sie entweder "Direction" oder
@@ -40,8 +41,8 @@ public class CommandType {
 	 *            Standardkontruktor mit einem leeren String initialisiert.
 	 */
 	public CommandType(String name) {
-		if (name == "Direction" || name == "Gear" || name == "Repetition"
-				|| name == "Pause") {
+		if (name.equals("Direction") || name.equals("Gear")
+				|| name.equals("Repetition") || name.equals("Pause")) {
 			this.name = name;
 		} else
 			this.name = "";
@@ -49,7 +50,7 @@ public class CommandType {
 	}
 
 	/**
-	 * Set-Methode fuer name
+	 * Set-Methode fuer name: Der String wird hier auf Richtigkeit geprueft.
 	 * 
 	 * @param name
 	 *            Der Name wird als Instanzvariable im Objekt gespeichert.
@@ -58,8 +59,8 @@ public class CommandType {
 	 * @return false wenn der eingegebene Name unzulaessig ist.
 	 */
 	public boolean setName(String name) {
-		if (name == "Direction" || name == "Gear" || name == "Repetition"
-				|| name == "Pause") {
+		if (name.equals("Direction") || name.equals("Gear")
+				|| name.equals("Repetition") || name.equals("Pause")) {
 			this.name = name;
 			return true;
 		} else
