@@ -159,4 +159,8 @@ public class ControlModel {
 	public CommandList getControlProcess() {
 		return controlProcess;
 	}
+	
+	public CommandType[] getCommandTypes(){
+		return commandTypes;
+	}
 }
