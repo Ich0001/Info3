@@ -29,6 +29,7 @@ public class Direction extends Command implements IDirection {
 	 * degree = 0.
 	 */
 	public Direction() {
+		super("Direction");
 		degree = 0;
 	}
 
@@ -41,6 +42,7 @@ public class Direction extends Command implements IDirection {
 	 *            ist.
 	 */
 	public Direction(int degree) {
+		super("Direction");
 		this.degree = degree;
 	}
 
@@ -70,6 +72,6 @@ public class Direction extends Command implements IDirection {
 	 */
 	@Override
 	public String toString() {
-		return "Direction degree " + degree;
+		return super.getName() + " degree " + getDegree();
 	}
 }

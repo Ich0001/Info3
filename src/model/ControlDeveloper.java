@@ -113,11 +113,17 @@ public class ControlDeveloper {
 		// // Liste ab.
 		controlModel.load(new File(System.getProperty("user.dir")
 				+ "\\CommandList.txt"));
-		// controlModel.save(new File(System.getProperty("user.dir")
-		// + "\\CommandList.txt"));
+
+		// controlModel.getControlProcess().remove(2);
+		// controlModel.getControlProcess().add(controlDeveloper1.commands[1]);
+		// controlModel.getControlProcess().add(new Direction(45));
+		// controlModel.getControlProcess().moveUp(6);
+		// controlModel.getControlProcess().moveUp(5);
+
+		controlModel.save(new File(System.getProperty("user.dir")
+				+ "\\CommandList.txt"));
 	}
 
-	//
 	/**
 	 * static String getName gibt den Namen der Klasse wieder.
 	 * 

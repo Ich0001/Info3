@@ -24,13 +24,6 @@ public class CommandType {
 	private String name;
 
 	/**
-	 * Standardkontruktor: Setzt auf name einen leeren String.
-	 */
-	public CommandType() {
-		name = "";
-	}
-
-	/**
 	 * Konstruktor: Setzt auf name den uebergebenen String. Der String wird
 	 * zuvor auf Richtigkeit geprueft.
 	 *
@@ -102,6 +95,7 @@ public class CommandType {
 			newCommand = new Pause();
 			break;
 		default:
+			newCommand = null;
 		}
 
 		return newCommand;

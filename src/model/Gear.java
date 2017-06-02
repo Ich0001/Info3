@@ -30,6 +30,7 @@ public class Gear extends Command implements IGear {
 	 * speed = 0 und duration = 0.
 	 */
 	public Gear() {
+		super("Gear");
 		speed = 0;
 		duration = 0;
 	}
@@ -46,6 +47,7 @@ public class Gear extends Command implements IGear {
 	 *            duration ist.
 	 */
 	public Gear(int speed, double duration) {
+		super("Gear");
 		this.speed = speed;
 		this.duration = duration;
 	}
@@ -96,6 +98,7 @@ public class Gear extends Command implements IGear {
 	 */
 	@Override
 	public String toString() {
-		return "Gear speed " + speed + " duration " + duration;
+		return super.getName() + " speed " + getSpeed() + " duration "
+				+ getDuration();
 	}
 }

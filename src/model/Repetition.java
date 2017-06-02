@@ -15,7 +15,9 @@ package model;
 import hsrt.mec.controldeveloper.core.com.command.IRepetition;
 
 /**
- * Die Klasse Repetition zeigt die Zahl der Steps und die Zahl der Repetitionen.
+ * Die Klasse "Repetition" ist eine von "Command" abgeleitete Klasse, die
+ * "IRepetition" implementiert. Die Klasse Repetition zeigt die Zahl der Steps
+ * und die Zahl der Repetitionen.
  * 
  * @see Command
  * @see IRepetition
@@ -30,6 +32,7 @@ public class Repetition extends Command implements IRepetition {
 	 * NULL eingesetzet
 	 */
 	public Repetition() {
+		super("Repetition");
 		nrSteps = 0;
 		nrRepetitions = 0;
 	}
@@ -43,6 +46,7 @@ public class Repetition extends Command implements IRepetition {
 	 *            die Zahl der Repetitionen einsetzen
 	 */
 	public Repetition(int nrSteps, int nrRepetitions) {
+		super("Repetition");
 		this.nrSteps = nrSteps;
 		this.nrRepetitions = nrRepetitions;
 	}
@@ -99,8 +103,8 @@ public class Repetition extends Command implements IRepetition {
 	@Override
 	// String toString() von dem abstract Methode in Command
 	public String toString() {
-		return "Repetition nrSteps " + nrSteps + " nrRepetitions "
-				+ nrRepetitions;
+		return super.getName() + " nrSteps " + getNrSteps() + " nrRepetitions "
+				+ getNrRepetitions();
 	}
 
 }

@@ -29,6 +29,7 @@ public class Pause extends Command implements IPause {
 	 * duration = 0.
 	 */
 	public Pause() {
+		super("Pause");
 		duration = 0;
 	}
 
@@ -41,6 +42,7 @@ public class Pause extends Command implements IPause {
 	 *            duration ist.
 	 */
 	public Pause(double duration) {
+		super("Pause");
 		this.duration = duration;
 	}
 
@@ -70,6 +72,6 @@ public class Pause extends Command implements IPause {
 	 */
 	@Override
 	public String toString() {
-		return "Pause duration " + duration;
+		return super.getName() + " duration " + getDuration();
 	}
 }

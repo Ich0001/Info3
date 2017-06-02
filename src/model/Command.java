@@ -29,6 +29,10 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 public abstract class Command implements ICommand {
 	private String name;
 
+	public Command(String name){
+		this.name = name;
+	}
+	
 	/**
 	 * getName von String name macht nichts anderes als beim Aufruf den
 	 * Wert/String von Name zurückzugeben

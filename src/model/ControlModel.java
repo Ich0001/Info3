@@ -38,6 +38,7 @@ public class ControlModel {
 	 * private.
 	 */
 	private ControlModel() {
+		createCommandTypes();
 	}
 
 	/**
@@ -85,13 +86,12 @@ public class ControlModel {
 		System.out.println(vektor);
 
 		// Speichern des eingelesenen Textfiles in der verketteten Liste
-		CommandType newInstance = new CommandType();
+		CommandType newInstance = new CommandType("");
 		for (String s : vektor) {
-			System.out.println(s);
+			// System.out.println(s); //Probeausgabe (auskommentiert)
 			String[] zeile = s.split(" ");
 			newInstance.setName(zeile[0]);
 			Command command = newInstance.createInctance();
-			// System.out.println("-->"+command.getName());
 			if (command instanceof Direction)
 				((Direction) command).setDegree(Integer.parseInt(zeile[2]));
 			else if (command instanceof Gear) {
@@ -105,7 +105,11 @@ public class ControlModel {
 				((Pause) command).setDuration(Double.parseDouble(zeile[2]));
 			else
 				System.out.println("Hat nicht geklappt!");
-			controlProcess.add(command);
+			
+			if (command != null)
+				controlProcess.add(command);
+			else
+				return false;
 		}
 		return true;
 	}
