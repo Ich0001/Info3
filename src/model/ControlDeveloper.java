@@ -11,7 +11,7 @@
 
 package model;
 
-import java.io.File;
+import model.gui.ControlDeveloperView;
 
 //import java.util.Vector;
 
@@ -96,10 +96,9 @@ public class ControlDeveloper {
 
 		/**
 		 * Aufgabenblatt 2
-		 * 
 		 */
-		ControlModel controlModel = ControlModel.getInstance();
-		controlModel.createCommandTypes();
+		// ControlModel controlModel = ControlModel.getInstance();
+		// controlModel.createCommandTypes();
 		// controlModel.getControlProcess().add(new Gear(5, .5));
 		// controlModel.getControlProcess().add(new Pause(2));
 		// ControlDeveloper controlDeveloper1 = new ControlDeveloper();
@@ -111,17 +110,24 @@ public class ControlDeveloper {
 		// controlModel.save(new File(System.getProperty("user.dir")
 		// + "\\CommandList.txt")); // Befehl: Speichere meine verkettete
 		// // Liste ab.
-		controlModel.load(new File(System.getProperty("user.dir")
-				+ "\\CommandList.txt"));
-
+		// controlModel.load(new File(System.getProperty("user.dir")
+		// + "\\CommandList.txt"));
 		// controlModel.getControlProcess().remove(2);
 		// controlModel.getControlProcess().add(controlDeveloper1.commands[1]);
 		// controlModel.getControlProcess().add(new Direction(45));
 		// controlModel.getControlProcess().moveUp(6);
 		// controlModel.getControlProcess().moveUp(5);
+		// controlModel.save(new File(System.getProperty("user.dir")
+		// + "\\CommandList.txt"));
 
-		controlModel.save(new File(System.getProperty("user.dir")
-				+ "\\CommandList.txt"));
+		/**
+		 * Aufgabenblatt3
+		 */
+		ControlModel controlModel = ControlModel.getInstance();
+		ControlDeveloperView cV = new ControlDeveloperView(controlModel);
+		cV.pack();
+		cV.setVisible(true);
+
 	}
 
 	/**

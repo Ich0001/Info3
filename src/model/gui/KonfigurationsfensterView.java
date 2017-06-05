@@ -8,14 +8,31 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class KonfigurationsfensterView extends JPanel {
-	private KonfigurationView konfiguration = new KonfigurationView();
-	private KonfigurationViewFooter footer = new KonfigurationViewFooter();
+import model.ControlModel;
 
-	public KonfigurationsfensterView() {
+public class KonfigurationsfensterView extends JPanel {
+	private ControlDeveloperView cV;
+	private ControlModel cM;
+	private KonfigurationView konfiguration;
+	private KonfigurationViewFooter footer;
+	
+
+	public KonfigurationsfensterView(ControlDeveloperView cV, ControlModel cM) {
+		this.cV = cV;
+		this.cM = cM;
+		konfiguration = new KonfigurationView(cM);
+		footer = new KonfigurationViewFooter(cV, cM);
 		setLayout(new BorderLayout());
 		add(konfiguration, BorderLayout.CENTER);
 		add(footer, BorderLayout.SOUTH);
+	}
+
+	public KonfigurationView getKonfiguration() {
+		return konfiguration;
+	}
+
+	public KonfigurationViewFooter getFooter() {
+		return footer;
 	}
 
 }
