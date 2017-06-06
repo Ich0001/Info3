@@ -100,5 +100,9 @@ public class CommandType {
 
 		return newCommand;
 	}
+	
+	public String toString() {
+		return name;
+	}
 
 }
