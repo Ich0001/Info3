@@ -1,4 +1,4 @@
-package model.gui;
+package view;
 
 import java.awt.BorderLayout;
 
@@ -10,11 +10,11 @@ import model.CommandType;
 import model.ControlModel;
 
 public class BefehleView extends JPanel {
-	String[] liste = {"eins", "zwei", "drei"};
+	String[] liste = { "eins", "zwei", "drei" };
 	private ControlModel cM;
 	private JList<CommandType> list;
 	private BefehleViewFooter footer = new BefehleViewFooter();
-	
+
 	/**
 	 * Create the panel.
 	 */
@@ -22,9 +22,11 @@ public class BefehleView extends JPanel {
 		this.cM = cM;
 		setLayout(new BorderLayout());
 		list = new JList<CommandType>(this.cM.getCommandTypes());
-//		add(list, BorderLayout.CENTER);
+		// add(list, BorderLayout.CENTER);
 		add(footer, BorderLayout.SOUTH);
-		JScrollPane scrollPane = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		JScrollPane scrollPane = new JScrollPane(list,
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		add(scrollPane, BorderLayout.CENTER);
 
 	}

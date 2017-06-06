@@ -1,4 +1,4 @@
-package model.gui;
+package view;
 
 import java.awt.BorderLayout;
 

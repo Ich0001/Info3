@@ -1,4 +1,4 @@
-package model.gui;
+package view;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -8,11 +8,11 @@ import javax.swing.JTextField;
 
 import model.ControlModel;
 
-public class KonfigurationViewDirection extends KonfigurationView {
-	private JLabel label1 = new JLabel("Degree: ");
+public class KonfigurationViewPause extends KonfigurationView {
+	private JLabel label1 = new JLabel("Duration: ");
 	private JTextField textField1 = new JTextField(8);
 
-	public KonfigurationViewDirection(ControlModel cM) {
+	public KonfigurationViewPause(ControlModel cM) {
 		super(cM);
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
@@ -33,7 +33,7 @@ public class KonfigurationViewDirection extends KonfigurationView {
 		add(textField1, c);
 	}
 
-	public String getText() {
+	public String getTextDuration() {
 		return textField1.getText();
 	}
 

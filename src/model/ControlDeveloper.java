@@ -11,7 +11,7 @@
 
 package model;
 
-import model.gui.ControlDeveloperView;
+import view.ControlDeveloperView;
 
 //import java.util.Vector;
 

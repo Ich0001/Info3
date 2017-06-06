@@ -105,7 +105,7 @@ public class ControlModel {
 				((Pause) command).setDuration(Double.parseDouble(zeile[2]));
 			else
 				System.out.println("Hat nicht geklappt!");
-			
+
 			if (command != null)
 				controlProcess.add(command);
 			else
@@ -159,8 +159,8 @@ public class ControlModel {
 	public CommandList getControlProcess() {
 		return controlProcess;
 	}
-	
-	public CommandType[] getCommandTypes(){
+
+	public CommandType[] getCommandTypes() {
 		return commandTypes;
 	}
 }

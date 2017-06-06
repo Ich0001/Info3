@@ -1,4 +1,4 @@
-package model.gui;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.MenuBar;
@@ -16,7 +16,7 @@ import model.ControlModel;
 public class ControlDeveloperView extends JFrame {
 	private JPanel contentPane;
 	private ControlModel cM;
-	
+
 	private BefehleView befehleView;
 	private KonfigurationsfensterView konfigurationsfenster;
 	private JTextArea textArea;
@@ -38,7 +38,7 @@ public class ControlDeveloperView extends JFrame {
 	public ControlDeveloperView(ControlModel cM) {
 		super("ControlDeveloper");
 		this.cM = cM;
-		//Erzeugen der Objekte
+		// Erzeugen der Objekte
 		befehleView = new BefehleView(this.cM);
 		konfigurationsfenster = new KonfigurationsfensterView(this, cM);
 		textArea = new JTextArea("HALLO\nHallo");
@@ -51,16 +51,12 @@ public class ControlDeveloperView extends JFrame {
 		contentPane.setLayout(new BorderLayout(5, 5));
 		setContentPane(contentPane);
 
-
 		add(befehleView, BorderLayout.WEST);
 
-		
 		add(konfigurationsfenster, BorderLayout.EAST);
-
 
 		textArea.setEditable(false);
 		add(textArea, BorderLayout.SOUTH);
-
 
 		JMenu menuInfo = new JMenu("File", true);
 		menuInfo.add(new JMenuItem("Haste gedacht da steht jetzt was :D"));
@@ -81,8 +77,8 @@ public class ControlDeveloperView extends JFrame {
 		return textArea;
 	}
 
-//	public JMenuBar getMenuBar() {
-//		return menuBar;
-//	}
+	// public JMenuBar getMenuBar() {
+	// return menuBar;
+	// }
 
 }
