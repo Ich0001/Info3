@@ -149,4 +149,12 @@ public class CommandList {
 
 		return true;
 	}
+
+	public int getNrContent() {
+		int i = 0;
+		while (get(i) != null) {
+			++i;
+		}
+		return i;
+	}
 }

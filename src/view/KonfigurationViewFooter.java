@@ -16,7 +16,7 @@ public class KonfigurationViewFooter extends JPanel {
 		this.cV = cV;
 		this.cM = cM;
 		setLayout(new FlowLayout(FlowLayout.RIGHT));
-		TestController testController = new TestController(cV, cM);
+		TestController testController = new TestController();
 		buttonSave.addActionListener(testController);
 		add(buttonSave);
 	}

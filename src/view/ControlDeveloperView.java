@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.MenuBar;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -14,13 +13,16 @@ import javax.swing.border.EmptyBorder;
 import model.ControlModel;
 
 public class ControlDeveloperView extends JFrame {
+	private static final ControlDeveloperView INSTANCE = new ControlDeveloperView();
 	private JPanel contentPane;
 	private ControlModel cM;
 
 	private BefehleView befehleView;
+	private ProgrammAblaufView programmAblaufView;
 	private KonfigurationsfensterView konfigurationsfenster;
 	private JTextArea textArea;
 	private JMenuBar menuBar;
+	private OurJTable table;
 
 	/**
 	 * Launch the application. Wird jetzt in der Klasse ControlDeveloper
@@ -35,11 +37,14 @@ public class ControlDeveloperView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ControlDeveloperView(ControlModel cM) {
+	private ControlDeveloperView() {
 		super("ControlDeveloper");
-		this.cM = cM;
+		this.cM = ControlModel.getInstance();
 		// Erzeugen der Objekte
-		befehleView = new BefehleView(this.cM);
+		table = new OurJTable();
+
+		befehleView = new BefehleView(this.cM, table);
+		programmAblaufView = new ProgrammAblaufView(table);
 		konfigurationsfenster = new KonfigurationsfensterView(this, cM);
 		textArea = new JTextArea("HALLO\nHallo");
 		menuBar = new JMenuBar();
@@ -52,7 +57,7 @@ public class ControlDeveloperView extends JFrame {
 		setContentPane(contentPane);
 
 		add(befehleView, BorderLayout.WEST);
-
+		add(programmAblaufView, BorderLayout.CENTER);
 		add(konfigurationsfenster, BorderLayout.EAST);
 
 		textArea.setEditable(false);
@@ -65,12 +70,26 @@ public class ControlDeveloperView extends JFrame {
 		add(menuBar, BorderLayout.NORTH);
 	}
 
+	/**
+	 * KlassenMethode (static), um das einzige Objekt dieser Klasse (Singleton)
+	 * zu bekommen.
+	 * 
+	 * @return Einziges Objekt / einzige Instanz dieser Klasse
+	 */
+	public static ControlDeveloperView getInstance() {
+		return INSTANCE;
+	}
+
 	public BefehleView getBefehleView() {
 		return befehleView;
 	}
 
 	public KonfigurationsfensterView getKonfigurationsfenster() {
 		return konfigurationsfenster;
+	}
+
+	public ProgrammAblaufView getProgrammAblaufView() {
+		return programmAblaufView;
 	}
 
 	public JTextArea getTextArea() {

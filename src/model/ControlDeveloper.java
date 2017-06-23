@@ -124,7 +124,8 @@ public class ControlDeveloper {
 		 * Aufgabenblatt3
 		 */
 		ControlModel controlModel = ControlModel.getInstance();
-		ControlDeveloperView cV = new ControlDeveloperView(controlModel);
+		ControlDeveloperView cV = ControlDeveloperView.getInstance();
+
 		cV.pack();
 		cV.setVisible(true);
 

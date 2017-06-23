@@ -9,9 +9,9 @@ public class TestController implements ActionListener {
 	private ControlDeveloperView cV;
 	private ControlModel cM;
 
-	public TestController(ControlDeveloperView cV, ControlModel cM) {
-		this.cV = cV;
-		this.cM = cM;
+	public TestController() {
+		this.cV = ControlDeveloperView.getInstance();
+		this.cM = ControlModel.getInstance();
 	}
 
 	@Override
