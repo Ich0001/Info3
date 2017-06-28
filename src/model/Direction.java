@@ -61,6 +61,7 @@ public class Direction extends Command implements IDirection {
 	 * 
 	 * @return Gibt den int-Wert der Instanzvariable degree zurück.
 	 */
+	@Override
 	public int getDegree() {
 		return degree;
 	}
@@ -73,5 +74,15 @@ public class Direction extends Command implements IDirection {
 	@Override
 	public String toString() {
 		return super.getName() + " degree " + getDegree();
+	}
+
+	/**
+	 * Methode, die die die Eigenschaften des Objektes als String zurueckgibt.
+	 * 
+	 * @return String der aus den Eigenschaften des Commands besteht.
+	 */
+	@Override
+	public String propertiesToString() {
+		return "Degree: " + getDegree();
 	}
 }

@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import model.ControlModel;
 
 public class OurJTable extends JTable {
-	public DefaultTableModel tableModel;
+	private DefaultTableModel tableModel;
 	private Vector<String> v;
 	private ControlModel cM;
 
@@ -18,9 +18,18 @@ public class OurJTable extends JTable {
 		v.add("Nr.");
 		v.add("Command");
 		v.add("Configuration");
-		tableModel = new DefaultTableModel(v, 0);
+		tableModel = new DefaultTableModel(v, 0) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		setModel(tableModel);
 
-		System.out.println("Haallo");
+		System.out.println("OurJTable erstellt");
+	}
+
+	public DefaultTableModel getTableModel() {
+		return tableModel;
 	}
 }

@@ -61,6 +61,7 @@ public class Pause extends Command implements IPause {
 	 * 
 	 * @return Gibt den double-Wert der Instanzvariable duration zurück.
 	 */
+	@Override
 	public double getDuration() {
 		return duration;
 	}
@@ -73,5 +74,15 @@ public class Pause extends Command implements IPause {
 	@Override
 	public String toString() {
 		return super.getName() + " duration " + getDuration();
+	}
+
+	/**
+	 * Methode, die die die Eigenschaften des Objektes als String zurueckgibt.
+	 * 
+	 * @return String der aus den Eigenschaften des Commands besteht.
+	 */
+	@Override
+	public String propertiesToString() {
+		return "Duration: " + getDuration();
 	}
 }

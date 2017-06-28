@@ -107,4 +107,15 @@ public class Repetition extends Command implements IRepetition {
 				+ getNrRepetitions();
 	}
 
+	/**
+	 * Methode, die die die Eigenschaften des Objektes als String zurueckgibt.
+	 * 
+	 * @return String der aus den Eigenschaften des Commands besteht.
+	 */
+	@Override
+	public String propertiesToString() {
+		return "NrSteps: " + getNrSteps() + " | NrRepetitions: "
+				+ getNrRepetitions();
+	}
+
 }

@@ -19,7 +19,7 @@ public class ControlDeveloperView extends JFrame {
 
 	private BefehleView befehleView;
 	private ProgrammAblaufView programmAblaufView;
-	private KonfigurationsfensterView konfigurationsfenster;
+	private KonfigurationsFensterView konfigurationsFensterView;
 	private JTextArea textArea;
 	private JMenuBar menuBar;
 	private OurJTable table;
@@ -40,15 +40,17 @@ public class ControlDeveloperView extends JFrame {
 	private ControlDeveloperView() {
 		super("ControlDeveloper");
 		this.cM = ControlModel.getInstance();
+
 		// Erzeugen der Objekte
 		table = new OurJTable();
-
 		befehleView = new BefehleView(this.cM, table);
 		programmAblaufView = new ProgrammAblaufView(table);
-		konfigurationsfenster = new KonfigurationsfensterView(this, cM);
+		konfigurationsFensterView = new KonfigurationsFensterView(this, cM);
 		textArea = new JTextArea("HALLO\nHallo");
 		menuBar = new JMenuBar();
 
+		// Definieren des Frames, und des ContentPanes, das alles im Rahmen
+		// enthaelt.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -56,13 +58,16 @@ public class ControlDeveloperView extends JFrame {
 		contentPane.setLayout(new BorderLayout(5, 5));
 		setContentPane(contentPane);
 
+		// Hinzufuegen der eigens definierten Panels
 		add(befehleView, BorderLayout.WEST);
 		add(programmAblaufView, BorderLayout.CENTER);
-		add(konfigurationsfenster, BorderLayout.EAST);
+		add(konfigurationsFensterView, BorderLayout.EAST);
 
+		// Konfigurieren und hinzufuegen der TextArea
 		textArea.setEditable(false);
 		add(textArea, BorderLayout.SOUTH);
 
+		// Konfigurieren und hinzufuegen der JMenuBar
 		JMenu menuInfo = new JMenu("File", true);
 		menuInfo.add(new JMenuItem("Haste gedacht da steht jetzt was :D"));
 		menuBar.add(menuInfo);
@@ -84,8 +89,8 @@ public class ControlDeveloperView extends JFrame {
 		return befehleView;
 	}
 
-	public KonfigurationsfensterView getKonfigurationsfenster() {
-		return konfigurationsfenster;
+	public KonfigurationsFensterView getKonfigurationsFenster() {
+		return konfigurationsFensterView;
 	}
 
 	public ProgrammAblaufView getProgrammAblaufView() {
@@ -96,8 +101,9 @@ public class ControlDeveloperView extends JFrame {
 		return textArea;
 	}
 
-	// public JMenuBar getMenuBar() {
-	// return menuBar;
-	// }
+	@Override
+	public JMenuBar getJMenuBar() {
+		return menuBar;
+	}
 
 }

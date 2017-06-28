@@ -67,6 +67,7 @@ public class Gear extends Command implements IGear {
 	 * 
 	 * @return Gibt den int-Wert der Instanzvariable speed zurück.
 	 */
+	@Override
 	public int getSpeed() {
 		return speed;
 	}
@@ -86,6 +87,7 @@ public class Gear extends Command implements IGear {
 	 * 
 	 * @return Gibt den double-Wert der Instanzvariable duration zurück.
 	 */
+	@Override
 	public double getDuration() {
 		return duration;
 	}
@@ -100,5 +102,15 @@ public class Gear extends Command implements IGear {
 	public String toString() {
 		return super.getName() + " speed " + getSpeed() + " duration "
 				+ getDuration();
+	}
+
+	/**
+	 * Methode, die die die Eigenschaften des Objektes als String zurueckgibt.
+	 * 
+	 * @return String der aus den Eigenschaften des Commands besteht.
+	 */
+	@Override
+	public String propertiesToString() {
+		return "Speed: " + getSpeed() + " | Duration: " + getDuration();
 	}
 }

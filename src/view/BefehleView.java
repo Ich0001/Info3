@@ -37,7 +37,7 @@ public class BefehleView extends JPanel {
 		footer.add(buttonAdd);
 		footer.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		ButtonAddController buttonAddController = new ButtonAddController(list,
-				table);
+				this.table);
 		buttonAdd.addActionListener(buttonAddController);
 		add(footer, BorderLayout.SOUTH);
 

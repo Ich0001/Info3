@@ -38,7 +38,7 @@ public class CommandType {
 				|| name.equals("Repetition") || name.equals("Pause")) {
 			this.name = name;
 		} else
-			this.name = "";
+			this.name = "nicht gesetzt";
 
 	}
 
@@ -101,6 +101,7 @@ public class CommandType {
 		return newCommand;
 	}
 
+	@Override
 	public String toString() {
 		return name;
 	}

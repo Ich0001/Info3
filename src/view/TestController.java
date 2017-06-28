@@ -16,9 +16,9 @@ public class TestController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String s1 = ((KonfigurationViewGear) cV.getKonfigurationsfenster()
+		String s1 = ((KonfigurationViewGear) cV.getKonfigurationsFenster()
 				.getKonfiguration()).getTextSpeed();
 		cV.getTextArea().setText(s1);
-		cV.getKonfigurationsfenster().getKonfiguration().clearInput();
+		cV.getKonfigurationsFenster().getKonfiguration().clearInput();
 	}
 }

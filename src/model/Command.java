@@ -40,6 +40,7 @@ public abstract class Command implements ICommand {
 	 * @return name
 	 * @author Lukas Erkert
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -47,10 +48,20 @@ public abstract class Command implements ICommand {
 	/**
 	 * Die abstrakte Methode String toString beschreibt den Prototyp dieser
 	 * Methode. Das bedeuetet, dass erbende Klassen eine Methode toString mit
-	 * Rückgabetyp String implementierten müssen.
+	 * Rueckgabetyp String implementierten muessen.
 	 * 
-	 * @author Lukas Erkert
+	 * @return String der aus Name des Commands und dessen Eigenschaften besteht
 	 */
+	@Override
 	public abstract String toString(); // abstract bedeutet von Abstakten
 										// Klassen existieren keine Objekte
+
+	/**
+	 * Die abstrakte Methode String propertiesToString beschreibt den Prototyp
+	 * dieser Methode. Die erbenden Klassen sollen mit dieser Methode ihre
+	 * Eigenschaften als String zurueckgeben.
+	 * 
+	 * @return String der nur aus den Eigenschaften des Commands besteht.
+	 */
+	public abstract String propertiesToString();
 }
