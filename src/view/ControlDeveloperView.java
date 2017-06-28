@@ -45,8 +45,8 @@ public class ControlDeveloperView extends JFrame {
 		table = new OurJTable();
 		befehleView = new BefehleView(this.cM, table);
 		programmAblaufView = new ProgrammAblaufView(table);
-		konfigurationsFensterView = new KonfigurationsFensterView(this, cM);
-		textArea = new JTextArea("HALLO\nHallo");
+		konfigurationsFensterView = new KonfigurationsFensterView();
+		textArea = new JTextArea("Programm gestartet:");
 		menuBar = new JMenuBar();
 
 		// Definieren des Frames, und des ContentPanes, das alles im Rahmen

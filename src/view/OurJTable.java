@@ -25,8 +25,6 @@ public class OurJTable extends JTable {
 			}
 		};
 		setModel(tableModel);
-
-		System.out.println("OurJTable erstellt");
 	}
 
 	public DefaultTableModel getTableModel() {

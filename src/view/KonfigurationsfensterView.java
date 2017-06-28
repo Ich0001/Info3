@@ -1,23 +1,31 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import model.ControlModel;
 
-public class KonfigurationsfensterView extends JPanel {
-	private ControlDeveloperView cV;
-	private ControlModel cM;
+public class KonfigurationsFensterView extends JPanel {
 	private KonfigurationView konfiguration;
-	private KonfigurationViewFooter footer;
+	private JButton buttonSave;
+	private JPanel footer;
 
-	public KonfigurationsfensterView(ControlDeveloperView cV, ControlModel cM) {
-		this.cV = cV;
-		this.cM = cM;
-		konfiguration = new KonfigurationViewGear(cM);
-		footer = new KonfigurationViewFooter(cV, cM);
+	public KonfigurationsFensterView() {
+		konfiguration = new KonfigurationViewGear(ControlModel.getInstance());
+		buttonSave = new JButton("Save");
+		footer = new JPanel();
+
 		setLayout(new BorderLayout());
+
+		// Hier muss man noch den richtigen Controller reinschreiben (statt
+		// ButtonAddController). Und auskommentieren.
+		// buttonSave.addActionListener(new ButtonAddController(null, null));
+		footer.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		footer.add(buttonSave);
+
 		add(konfiguration, BorderLayout.CENTER);
 		add(footer, BorderLayout.SOUTH);
 	}
@@ -25,9 +33,4 @@ public class KonfigurationsfensterView extends JPanel {
 	public KonfigurationView getKonfiguration() {
 		return konfiguration;
 	}
-
-	public KonfigurationViewFooter getFooter() {
-		return footer;
-	}
-
 }
