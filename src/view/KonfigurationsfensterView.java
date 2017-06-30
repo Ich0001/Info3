@@ -33,4 +33,12 @@ public class KonfigurationsFensterView extends JPanel {
 	public KonfigurationView getKonfiguration() {
 		return konfiguration;
 	}
+
+	public void changeKonfiguration(KonfigurationView newKonfiguration) {
+		remove(konfiguration);
+		konfiguration = newKonfiguration;
+		add(konfiguration, BorderLayout.CENTER);
+		repaint();
+		ControlDeveloperView.getInstance().pack();
+	}
 }
