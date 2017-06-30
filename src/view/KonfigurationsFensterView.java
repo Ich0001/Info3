@@ -6,9 +6,13 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import controller.ButtonAddController;
 import model.ControlModel;
 
 public class KonfigurationsFensterView extends JPanel {
+	/**
+	 * 
+	 */
 	private KonfigurationView konfiguration;
 	private JButton buttonSave;
 	private JPanel footer;
@@ -22,7 +26,7 @@ public class KonfigurationsFensterView extends JPanel {
 
 		// Hier muss man noch den richtigen Controller reinschreiben (statt
 		// ButtonAddController). Und auskommentieren.
-		// buttonSave.addActionListener(new ButtonAddController(null, null));
+		//buttonSave.addActionListener(new ButtonAddController(null, null));
 		footer.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		footer.add(buttonSave);
 

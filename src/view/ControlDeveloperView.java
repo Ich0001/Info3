@@ -1,14 +1,22 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Desktop;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URI;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.ControlModel;
 
@@ -37,6 +45,7 @@ public class ControlDeveloperView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+
 	private ControlDeveloperView() {
 		super("ControlDeveloper");
 		this.cM = ControlModel.getInstance();
@@ -65,14 +74,71 @@ public class ControlDeveloperView extends JFrame {
 
 		// Konfigurieren und hinzufuegen der TextArea
 		textArea.setEditable(false);
-		add(textArea, BorderLayout.SOUTH);
-
+        JScrollPane scrolltxt = new JScrollPane(textArea);
+		add(scrolltxt, BorderLayout.SOUTH);
+		textArea.setBorder(new EmptyBorder(0,0,50,0));
+		
 		// Konfigurieren und hinzufuegen der JMenuBar
-		JMenu menuInfo = new JMenu("File", true);
-		menuInfo.add(new JMenuItem("Haste gedacht da steht jetzt was :D"));
-		menuBar.add(menuInfo);
-		menuBar.add(new JMenu("Info", false));
+		
 		add(menuBar, BorderLayout.NORTH);
+		// File Menu
+		JMenu file = new JMenu("File", true);
+		menuBar.add(file);
+
+		// File Items
+		JMenuItem speichern = new JMenuItem("Speichern");
+		JMenuItem laden = new JMenuItem("Laden");
+		file.add(speichern);
+		file.add(laden);
+
+		// Help Menu
+		JMenu help = new JMenu("Help", true);
+		menuBar.add(help);
+		JMenuItem info = new JMenuItem("About ControlDeveloper");
+		help.add(info);
+		ActionListener al = new ActionListener() {
+
+		// JFileChoose
+		JFileChooser chooser = new JFileChooser();
+		JFileChooser savefile = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("txt", "text");
+
+		@Override
+	public void actionPerformed(ActionEvent e) {
+
+				// Action beim Speichern
+				if (e.getSource() == speichern) {
+					savefile.showSaveDialog(savefile);
+					if (!savefile.getSelectedFile().getAbsolutePath().endsWith(".txt")) {	//.txt hinzufuegen
+						File datei = new File(savefile.getSelectedFile() + ".txt");
+						cM.save(datei);
+					}
+
+					// Action beim Laden
+				} else if (e.getSource() == laden) {
+					// chooser.setFileFilter(filter);
+					chooser.showOpenDialog(getParent());
+					File datei = chooser.getSelectedFile();
+					cM.load(datei);
+
+					// Action beim Info
+				} else if (e.getSource() == info) {
+					try {
+						Desktop desktop = java.awt.Desktop.getDesktop();
+						URI oURL = new URI( "file://"+System.getProperty("user.dir") + "/doc/index.html"); 
+						desktop.browse(oURL);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+
+				}
+			}
+
+		};
+		speichern.addActionListener(al);
+		laden.addActionListener(al);
+		info.addActionListener(al);
+
 	}
 
 	/**
@@ -82,6 +148,7 @@ public class ControlDeveloperView extends JFrame {
 	 * @return Einziges Objekt / einzige Instanz dieser Klasse
 	 */
 	public static ControlDeveloperView getInstance() {
+
 		return INSTANCE;
 	}
 

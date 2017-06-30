@@ -67,7 +67,7 @@ public class ControlModel {
 	 * in der verketteten Liste abspeichert.
 	 * 
 	 * @param file
-	 *            Hier muss ein Objekt vom Typ File übergeben werden. Zum
+	 *            Hier muss ein Objekt vom Typ File ï¿½bergeben werden. Zum
 	 *            Beispiel: new File(System.getProperty("user.dir") +
 	 *            "\\CommandList.txt"). Aus dieser Datei wird geladen.
 	 * @see File
@@ -104,7 +104,7 @@ public class ControlModel {
 			} else if (command instanceof Pause)
 				((Pause) command).setDuration(Double.parseDouble(zeile[2]));
 			else
-				System.out.println("Hat nicht geklappt!");
+				System.out.println("Hat nicht g	eklappt!");
 
 			if (command != null)
 				controlProcess.add(command);
@@ -119,7 +119,7 @@ public class ControlModel {
 	 * Textdatei ab und gibt sie ueber die Konsole aus.
 	 * 
 	 * @param file
-	 *            Hier muss ein Objekt vom Typ File übergeben werden. Zum
+	 *            Hier muss ein Objekt vom Typ File ï¿½bergeben werden. Zum
 	 *            Beispiel: new File(System.getProperty("user.dir") +
 	 *            "\\CommandList.txt") In diese Datei wird gespeichert.
 	 * @return Boole'scher Wert der angibt, ob etwas abgespeichert wurde. True
@@ -152,9 +152,9 @@ public class ControlModel {
 	}
 
 	/**
-	 * Diese Methode gibt die verkettete Liste zurück
+	 * Diese Methode gibt die verkettete Liste zurï¿½ck
 	 * 
-	 * @return Gibt die verkettete Liste zurück
+	 * @return Gibt die verkettete Liste zurï¿½ck
 	 */
 	public CommandList getControlProcess() {
 		return controlProcess;
