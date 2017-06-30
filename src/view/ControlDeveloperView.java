@@ -106,4 +106,7 @@ public class ControlDeveloperView extends JFrame {
 		return menuBar;
 	}
 
+	public OurJTable getOurJTable() {
+		return table;
+	}
 }

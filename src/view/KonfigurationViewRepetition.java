@@ -44,11 +44,11 @@ public class KonfigurationViewRepetition extends KonfigurationView {
 		add(textField2, c);
 	}
 
-	public String getText1() {
+	public String getTextNrSteps() {
 		return textField1.getText();
 	}
 
-	public String getText2() {
+	public String getTextNrRepetitions() {
 		return textField2.getText();
 	}
 

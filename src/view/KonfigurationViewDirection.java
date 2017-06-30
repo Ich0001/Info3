@@ -33,7 +33,7 @@ public class KonfigurationViewDirection extends KonfigurationView {
 		add(textField1, c);
 	}
 
-	public String getText() {
+	public String getTextDegree() {
 		return textField1.getText();
 	}
 
