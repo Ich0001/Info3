@@ -16,5 +16,4 @@ public abstract class KonfigurationView extends JPanel {
 	}
 
 	public abstract void clearInput();
-
 }

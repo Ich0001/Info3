@@ -1,19 +1,19 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.net.URI;
+import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -29,22 +29,12 @@ public class ControlDeveloperView extends JFrame {
 	private BefehleView befehleView;
 	private ProgrammAblaufView programmAblaufView;
 	private KonfigurationsFensterView konfigurationsFensterView;
-	private JTextArea textArea;
+	private Console console;
 	private JMenuBar menuBar;
 	private OurJTable table;
 
 	/**
-	 * Launch the application. Wird jetzt in der Klasse ControlDeveloper
-	 * ausgefuehrt (main-Methode)
-	 */
-	// public static void main(String[] args) {
-	// ControlModel cM = ControlModel.getInstance();
-	// ControlDeveloperView frame = new ControlDeveloperView(cM);
-	// frame.setVisible(true);
-	// }
-
-	/**
-	 * Create the frame.
+	 * Konstruktor
 	 */
 	private ControlDeveloperView() {
 		super("ControlDeveloper");
@@ -60,7 +50,7 @@ public class ControlDeveloperView extends JFrame {
 		befehleView = new BefehleView(this.cM, table);
 		programmAblaufView = new ProgrammAblaufView(table);
 		konfigurationsFensterView = new KonfigurationsFensterView();
-		textArea = new JTextArea("Programm gestartet:");
+		console = new Console();
 		menuBar = new JMenuBar();
 
 		// Definieren des Frames, und des ContentPanes, das alles im Rahmen
@@ -77,25 +67,10 @@ public class ControlDeveloperView extends JFrame {
 		add(programmAblaufView, BorderLayout.CENTER);
 		add(konfigurationsFensterView, BorderLayout.EAST);
 
-		// // Konfigurieren und hinzufuegen der TextArea
-		// textArea.setEditable(false);
-		// add(textArea, BorderLayout.SOUTH);
-
-		// // Konfigurieren und hinzufuegen der JMenuBar
-		// JMenu menuInfo = new JMenu("File", true);
-		// menuInfo.add(new JMenuItem("Haste gedacht da steht jetzt was :D"));
-		// menuBar.add(menuInfo);
-		// menuBar.add(new JMenu("Info", false));
-		// add(menuBar, BorderLayout.NORTH);
-
-		// Konfigurieren und hinzufuegen der TextArea
-		textArea.setEditable(false);
-		JScrollPane scrolltxt = new JScrollPane(textArea);
-		add(scrolltxt, BorderLayout.SOUTH);
-		textArea.setBorder(new EmptyBorder(0, 0, 100, 0));
+		// Konfigurieren und hinzufuegen der Konsole mit TextArea
+		add(console, BorderLayout.SOUTH);
 
 		// Konfigurieren und hinzufuegen der JMenuBar
-
 		add(menuBar, BorderLayout.NORTH);
 		// File Menu
 		JMenu file = new JMenu("File", true);
@@ -135,32 +110,39 @@ public class ControlDeveloperView extends JFrame {
 
 					// Action beim Laden
 				} else if (e.getSource() == laden) {
-					// chooser.setFileFilter(filter);
 					chooser.showOpenDialog(getParent());
 					File datei = chooser.getSelectedFile();
 					cM.load(datei);
 
+					for (int i = 0; i < cM.getControlProcess().getNrContent(); i++) {
+						Vector<String> v = new Vector<String>();
+						v.add(Integer.toString(i + 1));
+						v.add(cM.getControlProcess().get(i).getName());
+						v.add(cM.getControlProcess().get(i)
+								.propertiesToString());
+						table.getTableModel().addRow(v);
+					}
+
 					// Action beim Info
 				} else if (e.getSource() == info) {
-					try {
-						Desktop desktop = java.awt.Desktop.getDesktop();
-						// URI oURL = new URI("file://"+
-						// System.getProperty("user.dir") + "/doc/index.html");
-						URI oURL = new URI(
-								"file:///D:/Reutlinger_Modell/MEB3/P03_Informatik3/GitHub/Info3/doc/index.html");
-						desktop.browse(oURL);
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+					ImageIcon icon = new ImageIcon("src/icon.png");
+
+					JOptionPane
+							.showMessageDialog(
+									null,
+									"ControlDeveloper:"
+											+ "\nBeschreibung:ControlDeveloper ist ein Steuerungsprogram "
+											+ "\nzur Steuerung eines Fahrzeugs über eine Bluetooth-Schnittstelle."
+											+ "\n(c)Copyrights: Jonathan Pfrommer, Aabed Solayman, Lukas Erkert",
+									"About", JOptionPane.INFORMATION_MESSAGE,
+									icon);
 
 				}
 			}
-
 		};
 		speichern.addActionListener(al);
 		laden.addActionListener(al);
 		info.addActionListener(al);
-
 	}
 
 	/**
@@ -185,10 +167,6 @@ public class ControlDeveloperView extends JFrame {
 		return programmAblaufView;
 	}
 
-	public JTextArea getTextArea() {
-		return textArea;
-	}
-
 	@Override
 	public JMenuBar getJMenuBar() {
 		return menuBar;
@@ -196,5 +174,37 @@ public class ControlDeveloperView extends JFrame {
 
 	public OurJTable getOurJTable() {
 		return table;
+	}
+
+	public JTextArea getTextArea() {
+		return console.getTextArea();
+	}
+
+	public void scrollToBottom() {
+		console.scrollToBottom();
+	}
+
+	/**
+	 * Die Methode print druckt einen uebergebenen String in der Konsole im
+	 * Sueden der Anwendung aus. Es wird kein Zeilenumbruch am Ende eingefuegt.
+	 * 
+	 * @param string
+	 *            Auszugebender String
+	 */
+	public void print(String string) {
+		getTextArea().append(string);
+		scrollToBottom();
+	}
+
+	/**
+	 * Die Methode println druckt einen uebergebenen String in der Konsole im
+	 * Sueden der Anwendung aus. Es wird ein Zeilenumbruch am Ende eingefuegt.
+	 * 
+	 * @param string
+	 *            Auszugebender String
+	 */
+	public void println(String string) {
+		getTextArea().append(string + "\n");
+		scrollToBottom();
 	}
 }

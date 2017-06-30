@@ -43,11 +43,11 @@ public class ButtonAddController implements ActionListener {
 			v.add(c.propertiesToString());
 			this.ourJTable.getTableModel().addRow(v);
 			this.ourJTable.getTableModel().fireTableDataChanged();
-			ControlDeveloperView.getInstance().getTextArea()
-					.append("\n>>" + c.getName() + " hinzugefügt");
+			ControlDeveloperView.getInstance().println(
+					">>" + c.getName() + " hinzugefügt");
 		} else {
-			ControlDeveloperView.getInstance().getTextArea()
-					.append("\n>>Kein Kommando ausgewählt!");
+			ControlDeveloperView.getInstance().println(
+					">>Kein Kommando ausgewählt!");
 		}
 	}
 }

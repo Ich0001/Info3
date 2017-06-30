@@ -41,32 +41,31 @@ public class ProgrammAblaufView extends JPanel {
 		buttonPanel.add(buttonStop);
 		buttonPanel.add(buttonStart);
 
-		// konfiguration =
-		// ControlDeveloperView.getInstance().getKonfigurationsFenster().getKonfiguration();
-
+		// ButtonRemove
 		buttonRemove.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// konfiguration.setVisible(false);
+				ControlDeveloperView.getInstance().getKonfigurationsFenster()
+						.setKonfigurationIdle();
 
 				int index = table.getSelectedRow();
 				if (index >= 0) {
 					cL.remove(table.getSelectedRow());
 					table.getTableModel().removeRow(table.getSelectedRow());
 					System.out.println("gelöscht");
-					ControlDeveloperView.getInstance().getTextArea()
-							.append("\n>>Zeile " + (index + 1) + " geloescht");
+					ControlDeveloperView.getInstance().println(
+							">>Zeile " + (index + 1) + " geloescht");
 				} else {
 					System.out.println("kein Element ausgewaehlt");
-					ControlDeveloperView.getInstance().getTextArea()
-							.append("\n>>Kein Element ausgewaehlt!");
+					ControlDeveloperView.getInstance().println(
+							">>Kein Element ausgewaehlt!");
 
 					table.getTableModel().fireTableDataChanged();
 				}
 			}
 		});
 
+		// ButtonUp
 		buttonUp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -77,29 +76,26 @@ public class ProgrammAblaufView extends JPanel {
 					table.getTableModel().moveRow(table.getSelectedRow(),
 							table.getSelectedRow(), table.getSelectedRow() - 1);
 					System.out.println("Nach Oben verschoben");
-					ControlDeveloperView
-							.getInstance()
-							.getTextArea()
-							.append("\n>>Zeile " + (index + 1) + " mit Zeile "
-									+ (index) + " getauscht");
+					ControlDeveloperView.getInstance().println(
+							">>Zeile " + (index + 1) + " mit Zeile " + (index)
+									+ " getauscht");
 				} else if (index == 0) {
 					System.out
 							.println("Kann nicht nach Oben verschoben werden!!!");
-					ControlDeveloperView
-							.getInstance()
-							.getTextArea()
-							.append("\n>>Zeile " + (index + 1)
+					ControlDeveloperView.getInstance().println(
+							">>Zeile " + (index + 1)
 									+ " Kann nicht getauscht werden!");
 				}
 
 				else {
 					System.out.println("kein Element ausgewaehlt");
-					ControlDeveloperView.getInstance().getTextArea()
-							.append("\n>>Kein Element ausgewaehlt!");
+					ControlDeveloperView.getInstance().println(
+							">>Kein Element ausgewaehlt!");
 				}
 			}
 		});
 
+		// ButtonDown
 		buttonDown.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -114,28 +110,25 @@ public class ProgrammAblaufView extends JPanel {
 					System.out
 							.println(cM.getControlProcess().getNrContent() - 1);
 					System.out.println(index);
-					ControlDeveloperView
-							.getInstance()
-							.getTextArea()
-							.append("\n>>Zeile " + (index + 1) + " mit Zeile "
+					ControlDeveloperView.getInstance().println(
+							">>Zeile " + (index + 1) + " mit Zeile "
 									+ (index + 2) + " getauscht");
 				} else if (index == (cM.getControlProcess().getNrContent() - 1)) {
 
 					System.out
 							.println("Kann nicht nach Unten verschoben werden!!!");
-					ControlDeveloperView
-							.getInstance()
-							.getTextArea()
-							.append("\n>>Zeile " + (index + 1)
+					ControlDeveloperView.getInstance().println(
+							">>Zeile " + (index + 1)
 									+ " Kann nicht getauscht werden!");
 				} else {
 					System.out.println("kein Element ausgewaehlt");
-					ControlDeveloperView.getInstance().getTextArea()
-							.append("\n>>Kein Element ausgewaehlt!");
+					ControlDeveloperView.getInstance().println(
+							">>Kein Element ausgewaehlt!");
 				}
 			}
 		});
 
+		// Footer
 		footer.add(buttonPanel, BorderLayout.EAST);
 		add(footer, BorderLayout.SOUTH);
 		JScrollPane scrollPane = new JScrollPane(table,

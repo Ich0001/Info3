@@ -19,9 +19,6 @@ public class BefehleView extends JPanel {
 	private JButton buttonAdd = new JButton("Add");
 	private OurJTable table;
 
-	/**
-	 * Create the panel.
-	 */
 	public BefehleView(ControlModel cM, OurJTable table) {
 		this.cM = cM;
 		this.table = table;
@@ -40,6 +37,5 @@ public class BefehleView extends JPanel {
 				this.table);
 		buttonAdd.addActionListener(buttonAddController);
 		add(footer, BorderLayout.SOUTH);
-
 	}
 }
