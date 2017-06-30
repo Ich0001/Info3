@@ -22,6 +22,7 @@ public class KonfigurationsFensterView extends JPanel {
 
 	public KonfigurationsFensterView() {
 		konfiguration = new KonfigurationViewPause(ControlModel.getInstance());
+		konfiguration.setVisible(false);
 		buttonSave = new JButton("Save");
 		footer = new JPanel();
 
@@ -31,6 +32,8 @@ public class KonfigurationsFensterView extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+
+				// Direktion
 				if (konfiguration instanceof KonfigurationViewDirection) {
 					String degree = ((KonfigurationViewDirection) konfiguration)
 							.getTextDegree();
@@ -43,11 +46,24 @@ public class KonfigurationsFensterView extends JPanel {
 					// Zahlen eingegeben wurden
 					((Direction) command).setDegree(Integer.parseInt(degree));
 
-					System.out.println("degree="
+					System.out.println("Degree="
 							+ ((Direction) (ControlModel.getInstance()
 									.getControlProcess().get(selRow)))
 									.getDegree());
-				} else if (konfiguration instanceof KonfigurationViewGear) {
+					ControlDeveloperView
+							.getInstance()
+							.getTextArea()
+							.append("\n>>Zeile "
+									+ (selRow + 1)
+									+ ": Degree="
+									+ ((Direction) (ControlModel.getInstance()
+											.getControlProcess().get(selRow)))
+											.getDegree());
+
+				}
+
+				// Gear
+				else if (konfiguration instanceof KonfigurationViewGear) {
 					String speed = ((KonfigurationViewGear) konfiguration)
 							.getTextSpeed();
 					String duration = ((KonfigurationViewGear) konfiguration)
@@ -72,9 +88,26 @@ public class KonfigurationsFensterView extends JPanel {
 									.getControlProcess().get(selRow)))
 									.getDuration());
 
+					ControlDeveloperView
+							.getInstance()
+							.getTextArea()
+							.append("\n>>Zeile "
+									+ (selRow + 1)
+									+ ": Speed="
+									+ ((Gear) (ControlModel.getInstance()
+											.getControlProcess().get(selRow)))
+											.getSpeed()
+									+ "  Duration="
+									+ ((Gear) (ControlModel.getInstance()
+											.getControlProcess().get(selRow)))
+											.getDuration());
+
 					System.out.println("speed:" + speed + "  duration:"
 							+ duration);
-				} else if (konfiguration instanceof KonfigurationViewRepetition) {
+				}
+
+				// Repetition
+				else if (konfiguration instanceof KonfigurationViewRepetition) {
 					String nrSteps = ((KonfigurationViewRepetition) konfiguration)
 							.getTextNrSteps();
 					String nrRepetitions = ((KonfigurationViewRepetition) konfiguration)
@@ -91,18 +124,34 @@ public class KonfigurationsFensterView extends JPanel {
 					((Repetition) command).setNrRepetitions(Integer
 							.parseInt(nrRepetitions));
 
-					System.out.println("nrSteps="
+					System.out.println("NrSteps="
 							+ ((Repetition) (ControlModel.getInstance()
 									.getControlProcess().get(selRow)))
 									.getNrSteps()
-							+ "  nrRepetitions="
+							+ "  NrRepetitions="
 							+ ((Repetition) (ControlModel.getInstance()
 									.getControlProcess().get(selRow)))
 									.getNrRepetitions());
 
-					System.out.println("nrSteps:" + nrSteps
-							+ "  nrRepetitions:" + nrRepetitions);
-				} else if (konfiguration instanceof KonfigurationViewPause) {
+					System.out.println("NrSteps:" + nrSteps
+							+ "  NrRepetitions:" + nrRepetitions);
+					ControlDeveloperView
+							.getInstance()
+							.getTextArea()
+							.append("\n>>Zeile "
+									+ (selRow + 1)
+									+ ": NrSteps="
+									+ ((Repetition) (ControlModel.getInstance()
+											.getControlProcess().get(selRow)))
+											.getNrSteps()
+									+ "  NrRepetitions="
+									+ ((Repetition) (ControlModel.getInstance()
+											.getControlProcess().get(selRow)))
+											.getNrRepetitions());
+				}
+
+				// Pause
+				else if (konfiguration instanceof KonfigurationViewPause) {
 					String duration = ((KonfigurationViewPause) konfiguration)
 							.getTextDuration();
 					konfiguration.clearInput();
@@ -121,6 +170,17 @@ public class KonfigurationsFensterView extends JPanel {
 									.getDuration());
 
 					System.out.println("duration:" + duration);
+
+					ControlDeveloperView
+							.getInstance()
+							.getTextArea()
+							.append("\n>>Zeile "
+									+ (selRow + 1)
+									+ ": Duration="
+									+ ((Pause) (ControlModel.getInstance()
+											.getControlProcess().get(selRow)))
+											.getDuration());
+
 				} else
 					System.out
 							.println("Fehler in KonfigurationsFensterView :-(");
@@ -138,6 +198,7 @@ public class KonfigurationsFensterView extends JPanel {
 										.propertiesToString(),
 								ControlDeveloperView.getInstance()
 										.getOurJTable().getSelectedRow(), 2);
+
 				;
 				System.out.println("fire");
 			}

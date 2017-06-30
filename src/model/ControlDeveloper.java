@@ -125,7 +125,6 @@ public class ControlDeveloper {
 		 */
 		ControlModel controlModel = ControlModel.getInstance();
 		ControlDeveloperView cV = ControlDeveloperView.getInstance();
-
 		cV.pack();
 		cV.setVisible(true);
 
@@ -178,5 +177,4 @@ public class ControlDeveloper {
 			System.out.println(c.toString());
 		}
 	}
-
 }
