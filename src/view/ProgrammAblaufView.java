@@ -106,17 +106,18 @@ public class ProgrammAblaufView extends JPanel {
 					cL.moveDown(table.getSelectedRow());
 					table.getTableModel().moveRow(table.getSelectedRow(),
 							table.getSelectedRow(), table.getSelectedRow() + 1);
-					System.out.println("Nachu Unten verschoben");
+					System.out.println("Nach Unten verschoben");
 					System.out
 							.println(cM.getControlProcess().getNrContent() - 1);
 					System.out.println(index);
 					ControlDeveloperView.getInstance().println(
 							">>Zeile " + (index + 1) + " mit Zeile "
 									+ (index + 2) + " getauscht");
-				} else if (index == (cM.getControlProcess().getNrContent() - 1)) {
+				} else if (index != -1
+						&& index == (cM.getControlProcess().getNrContent() - 1)) {
 
 					System.out
-							.println("Kann nicht nach Unten verschoben werden!!!");
+							.println("Kann nicht nach unten verschoben werden!!!");
 					ControlDeveloperView.getInstance().println(
 							">>Zeile " + (index + 1)
 									+ " Kann nicht getauscht werden!");

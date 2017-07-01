@@ -43,26 +43,8 @@ public class KonfigurationsFensterView extends JPanel {
 								.getOurJTable().getSelectedRow();
 						Command command = ControlModel.getInstance()
 								.getControlProcess().get(selRow);
-						// TODO exception-handling fuer den Fall dass nicht nur
-						// Zahlen eingegeben wurden
 						((Direction) command).setDegree(Integer
 								.parseInt(degree));
-
-						// System.out.println("Degree="
-						// + ((Direction) (ControlModel.getInstance()
-						// .getControlProcess().get(selRow)))
-						// .getDegree());
-						// ControlDeveloperView
-						// .getInstance()
-						// .getTextArea()
-						// .append("\n>>Zeile "
-						// + (selRow + 1)
-						// + ": Degree="
-						// + ((Direction) (ControlModel
-						// .getInstance()
-						// .getControlProcess()
-						// .get(selRow))).getDegree());
-
 					}
 
 					// Gear
@@ -77,35 +59,9 @@ public class KonfigurationsFensterView extends JPanel {
 								.getOurJTable().getSelectedRow();
 						Command command = ControlModel.getInstance()
 								.getControlProcess().get(selRow);
-						// TODO exception-handling fuer den Fall dass nicht nur
-						// Zahlen eingegeben wurden
 						((Gear) command).setSpeed(Integer.parseInt(speed));
 						((Gear) command).setDuration(Double
 								.parseDouble(duration));
-
-						// System.out.println("speed="
-						// + ((Gear) (ControlModel.getInstance()
-						// .getControlProcess().get(selRow)))
-						// .getSpeed()
-						// + "  duration="
-						// + ((Gear) (ControlModel.getInstance()
-						// .getControlProcess().get(selRow)))
-						// .getDuration());
-						// System.out.println("speed:" + speed + "  duration:"
-						// + duration);
-						// ControlDeveloperView
-						// .getInstance()
-						// .getTextArea()
-						// .append("\n>>Zeile "
-						// + (selRow + 1)
-						// + ": Speed="
-						// + ((Gear) (ControlModel.getInstance()
-						// .getControlProcess()
-						// .get(selRow))).getSpeed()
-						// + "  Duration="
-						// + ((Gear) (ControlModel.getInstance()
-						// .getControlProcess()
-						// .get(selRow))).getDuration());
 					}
 
 					// Repetition
@@ -120,39 +76,10 @@ public class KonfigurationsFensterView extends JPanel {
 								.getOurJTable().getSelectedRow();
 						Command command = ControlModel.getInstance()
 								.getControlProcess().get(selRow);
-						// TODO exception-handling fuer den Fall dass nicht nur
-						// Zahlen eingegeben wurden
 						((Repetition) command).setNrSteps(Integer
 								.parseInt(nrSteps));
 						((Repetition) command).setNrRepetitions(Integer
 								.parseInt(nrRepetitions));
-
-						// System.out.println("NrSteps="
-						// + ((Repetition) (ControlModel.getInstance()
-						// .getControlProcess().get(selRow)))
-						// .getNrSteps()
-						// + "  NrRepetitions="
-						// + ((Repetition) (ControlModel.getInstance()
-						// .getControlProcess().get(selRow)))
-						// .getNrRepetitions());
-						// System.out.println("NrSteps:" + nrSteps
-						// + "  NrRepetitions:" + nrRepetitions);
-						// ControlDeveloperView
-						// .getInstance()
-						// .getTextArea()
-						// .append("\n>>Zeile "
-						// + (selRow + 1)
-						// + ": NrSteps="
-						// + ((Repetition) (ControlModel
-						// .getInstance()
-						// .getControlProcess()
-						// .get(selRow))).getNrSteps()
-						// + "  NrRepetitions="
-						// + ((Repetition) (ControlModel
-						// .getInstance()
-						// .getControlProcess()
-						// .get(selRow)))
-						// .getNrRepetitions());
 					}
 
 					// Pause
@@ -165,48 +92,44 @@ public class KonfigurationsFensterView extends JPanel {
 								.getOurJTable().getSelectedRow();
 						Command command = ControlModel.getInstance()
 								.getControlProcess().get(selRow);
-						// TODO exception-handling fuer den Fall dass nicht nur
-						// Zahlen eingegeben wurden
 						((Pause) command).setDuration(Double
 								.parseDouble(duration));
+					}
 
-						// System.out.println("duration="
-						// + ((Pause) (ControlModel.getInstance()
-						// .getControlProcess().get(selRow)))
-						// .getDuration());
-						// System.out.println("duration:" + duration);
-						// ControlDeveloperView
-						// .getInstance()
-						// .getTextArea()
-						// .append("\n>>Zeile "
-						// + (selRow + 1)
-						// + ": Duration="
-						// + ((Pause) (ControlModel.getInstance()
-						// .getControlProcess()
-						// .get(selRow))).getDuration());
+					// Idle
+					else if (konfiguration instanceof KonfigurationViewIdle) {
+						ControlDeveloperView.getInstance().println(
+								">>Kein Kommando ausgewählt!");
+					}
 
-					} else {
+					else {
 						System.out
 								.println("Fehler in KonfigurationsFensterView :-(");
 					}
 
 					// Setze die geaenderten Inhalte aus der verketteten Liste
 					// in das TableModel um
-					ControlDeveloperView
-							.getInstance()
-							.getOurJTable()
-							.getTableModel()
-							.setValueAt(
-									ControlModel
-											.getInstance()
-											.getControlProcess()
-											.get(ControlDeveloperView
-													.getInstance()
-													.getOurJTable()
-													.getSelectedRow())
-											.propertiesToString(),
-									ControlDeveloperView.getInstance()
-											.getOurJTable().getSelectedRow(), 2);
+					if (konfiguration instanceof KonfigurationViewDirection
+							|| konfiguration instanceof KonfigurationViewGear
+							|| konfiguration instanceof KonfigurationViewRepetition
+							|| konfiguration instanceof KonfigurationViewPause) {
+						ControlDeveloperView
+								.getInstance()
+								.getOurJTable()
+								.getTableModel()
+								.setValueAt(
+										ControlModel
+												.getInstance()
+												.getControlProcess()
+												.get(ControlDeveloperView
+														.getInstance()
+														.getOurJTable()
+														.getSelectedRow())
+												.propertiesToString(),
+										ControlDeveloperView.getInstance()
+												.getOurJTable()
+												.getSelectedRow(), 2);
+					}
 				}
 
 				catch (NumberFormatException e) {
