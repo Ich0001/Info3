@@ -56,7 +56,7 @@ public class ControlDeveloperView extends JFrame {
 		// Definieren des Frames, und des ContentPanes, das alles im Rahmen
 		// enthaelt.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 500);
+		setBounds(100, 50, 800, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(5, 5));
@@ -112,8 +112,14 @@ public class ControlDeveloperView extends JFrame {
 				} else if (e.getSource() == laden) {
 					chooser.showOpenDialog(getParent());
 					File datei = chooser.getSelectedFile();
-					cM.load(datei);
 
+					// TableModel erst leeren
+					final int ROW_COUNT = table.getTableModel().getRowCount();
+					for (int i = 0; i < ROW_COUNT; ++i) {
+						table.getTableModel().removeRow(0);
+					}
+
+					cM.load(datei);
 					for (int i = 0; i < cM.getControlProcess().getNrContent(); i++) {
 						Vector<String> v = new Vector<String>();
 						v.add(Integer.toString(i + 1));

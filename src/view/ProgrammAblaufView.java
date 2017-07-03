@@ -129,6 +129,28 @@ public class ProgrammAblaufView extends JPanel {
 			}
 		});
 
+		buttonStart.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				CommandList cL = ControlModel.getInstance().getControlProcess();
+				final int NR_CONTENT = cL.getNrContent();
+				for (int i = 0; i < NR_CONTENT; ++i) {
+					ControlDeveloperView.getInstance().println(
+							">>" + cL.get(i).toString());
+				}
+			}
+		});
+
+		buttonStop.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ControlDeveloperView.getInstance().println(
+						">>Ausfuehrung stoppen");
+			}
+		});
+
 		// Footer
 		footer.add(buttonPanel, BorderLayout.EAST);
 		add(footer, BorderLayout.SOUTH);
