@@ -117,9 +117,10 @@ public class ButtonSaveController implements ActionListener {
 								ControlDeveloperView.getInstance()
 										.getOurJTable().getSelectedRow(), 2);
 			}
-		}
-
-		catch (NumberFormatException e) {
+		} catch (ClassCastException e) {
+			System.out.println("Falsche Auswahl");
+			ControlDeveloperView.getInstance().println(">>Falsche Auswahl!");
+		} catch (NumberFormatException e) {
 			System.out.println("Scheisse gebaut");
 			ControlDeveloperView.getInstance().println(
 					">>Keine oder Falsche Zeichen eingegeben!");

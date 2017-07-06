@@ -25,6 +25,9 @@ public class ButtonAddController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		ControlDeveloperView.getInstance().getKonfigurationsFenster()
+				.setKonfigurationIdle();
+
 		// Ermitteln ausgewähltes Element
 		CommandType cT = list.getSelectedValue();
 

@@ -69,6 +69,8 @@ public class ProgrammAblaufView extends JPanel {
 		buttonUp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ControlDeveloperView.getInstance().getKonfigurationsFenster()
+						.setKonfigurationIdle();
 				int index = table.getSelectedRow();
 
 				if (index > 0) {
@@ -99,6 +101,8 @@ public class ProgrammAblaufView extends JPanel {
 		buttonDown.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ControlDeveloperView.getInstance().getKonfigurationsFenster()
+						.setKonfigurationIdle();
 				int index = table.getSelectedRow();
 
 				if (index >= 0
