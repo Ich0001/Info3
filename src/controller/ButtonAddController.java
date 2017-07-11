@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 import javax.swing.JList;
 
@@ -10,23 +9,18 @@ import model.Command;
 import model.CommandType;
 import model.ControlModel;
 import view.ControlDeveloperView;
-import view.OurJTable;
 
 public class ButtonAddController implements ActionListener {
 	private ControlModel cM;
 	private JList<CommandType> list;
-	private OurJTable ourJTable;
 
-	public ButtonAddController(JList<CommandType> list, OurJTable ourJTable) {
+	public ButtonAddController(JList<CommandType> list) {
 		cM = ControlModel.getInstance();
-		this.ourJTable = ourJTable;
 		this.list = list;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		ControlDeveloperView.getInstance().getKonfigurationsFenster()
-				.setKonfigurationIdle();
 
 		// Ermitteln ausgewähltes Element
 		CommandType cT = list.getSelectedValue();
@@ -38,16 +32,7 @@ public class ButtonAddController implements ActionListener {
 
 			// Speichern des Commands in der verketteten Liste
 			cM.getControlProcess().add(c);
-
-			// Informiere Tabelle (OurJTable) ueber die Aenderung
-			Vector<String> v = new Vector<String>();
-			v.add(Integer.toString(cM.getControlProcess().getNrContent()));
-			v.add(c.getName());
-			v.add(c.propertiesToString());
-			this.ourJTable.getTableModel().addRow(v);
-			this.ourJTable.getTableModel().fireTableDataChanged();
-			ControlDeveloperView.getInstance().println(
-					">>" + c.getName() + " hinzugefügt");
+			System.out.println(">>" + c.getName() + " hinzugefügt");
 		} else {
 			ControlDeveloperView.getInstance().println(
 					">>Kein Kommando ausgewählt!");

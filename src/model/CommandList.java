@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.table.AbstractTableModel;
+
 /**
  * Ein Objekt der Klasse CommandList beschreibt eine verkettete Liste. Mit ihren
  * Methoden kann die verkettete Liste bearbeitet werden (hinzufügen, löschen,
@@ -8,7 +10,8 @@ package model;
  * 
  * @author Jonathan
  */
-public class CommandList {
+@SuppressWarnings("serial")
+public class CommandList extends AbstractTableModel {
 	private Element root = null;
 
 	/**
@@ -36,7 +39,7 @@ public class CommandList {
 			hilfsElement.setNext(newElement);
 			hilfsElement.getNext().setPrev(hilfsElement);
 		}
-
+		fireTableDataChanged();
 		return true;
 	}
 
@@ -67,6 +70,7 @@ public class CommandList {
 			if (hilfsElement.getNext() != null)
 				hilfsElement.getNext().setPrev(hilfsElement.getPrev());
 		}
+		fireTableDataChanged();
 		return true;
 	}
 
@@ -146,7 +150,7 @@ public class CommandList {
 												// und man kann nicht auf das
 												// Element zugreifen
 		prev.setPrev(hilfsElement); // 5
-
+		fireTableDataChanged();
 		return true;
 	}
 
@@ -156,5 +160,57 @@ public class CommandList {
 			++i;
 		}
 		return i;
+	}
+
+	public void clearList() {
+		root = null;
+		fireTableDataChanged();
+	}
+
+	@Override
+	public int getColumnCount() {
+		return 3;
+	}
+
+	@Override
+	public int getRowCount() {
+		return getNrContent();
+	}
+
+	@Override
+	public Object getValueAt(int row, int col) {
+		if (col == 0)
+			return row + 1;
+		else if (col == 1)
+			return get(row).getName();
+		else if (col == 2)
+			return get(row).propertiesToString();
+		else
+			return "error";
+	}
+
+	/**
+	 * Overwritten Method: Returns a default name for the column using
+	 * spreadsheet conventions: A, B, C, ... Except of the first three columns,
+	 * which are "Nr.", "Command", "Configuration".
+	 * 
+	 * @param column
+	 *            - the column being queried
+	 * 
+	 * @return a string containing the proper name of the first three columns.
+	 *         Other columns are default values
+	 */
+	@Override
+	public String getColumnName(int col) {
+		String colName;
+		if (col == 0)
+			colName = "Nr.";
+		else if (col == 1)
+			colName = "Command";
+		else if (col == 2)
+			colName = "Configuration";
+		else
+			colName = super.getColumnName(col);
+		return colName;
 	}
 }

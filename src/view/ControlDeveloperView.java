@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -21,6 +20,7 @@ import javax.swing.table.TableColumnModel;
 
 import model.ControlModel;
 
+@SuppressWarnings("serial")
 public class ControlDeveloperView extends JFrame {
 	private static final ControlDeveloperView INSTANCE = new ControlDeveloperView();
 	private JPanel contentPane;
@@ -28,7 +28,7 @@ public class ControlDeveloperView extends JFrame {
 
 	private BefehleView befehleView;
 	private ProgrammAblaufView programmAblaufView;
-	private KonfigurationsFensterView konfigurationsFensterView;
+	private KonfigurationsfensterView konfigurationsFensterView;
 	private Console console;
 	private JMenuBar menuBar;
 	private OurJTable table;
@@ -47,9 +47,9 @@ public class ControlDeveloperView extends JFrame {
 		colModel.getColumn(0).setPreferredWidth(20);
 		colModel.getColumn(2).setPreferredWidth(200);
 
-		befehleView = new BefehleView(this.cM, table);
+		befehleView = new BefehleView(this.cM);
 		programmAblaufView = new ProgrammAblaufView(table);
-		konfigurationsFensterView = new KonfigurationsFensterView();
+		konfigurationsFensterView = new KonfigurationsfensterView();
 		console = new Console();
 		menuBar = new JMenuBar();
 
@@ -73,14 +73,20 @@ public class ControlDeveloperView extends JFrame {
 		// Konfigurieren und hinzufuegen der JMenuBar
 		add(menuBar, BorderLayout.NORTH);
 		// File Menu
-		JMenu file = new JMenu("File", true);
-		menuBar.add(file);
+		JMenu jMenu = new JMenu("File", true);
+		menuBar.add(jMenu);
 
-		// File Items
-		JMenuItem speichern = new JMenuItem("Speichern");
+		// File Items / Menue aufbauen
+		JMenuItem neu = new JMenuItem("Neu");
 		JMenuItem laden = new JMenuItem("Laden");
-		file.add(speichern);
-		file.add(laden);
+		JMenuItem speichern = new JMenuItem("Speichern");
+		JMenuItem append = new JMenuItem("Hinzufügen");
+		jMenu.add(neu);
+		jMenu.addSeparator();
+		jMenu.add(laden);
+		jMenu.add(speichern);
+		jMenu.addSeparator();
+		jMenu.add(append);
 
 		// Help Menu
 		JMenu help = new JMenu("Help", true);
@@ -101,33 +107,32 @@ public class ControlDeveloperView extends JFrame {
 				// Action beim Speichern
 				if (e.getSource() == speichern) {
 					savefile.showSaveDialog(savefile);
+
 					if (!savefile.getSelectedFile().getAbsolutePath()
 							.endsWith(".txt")) { // .txt hinzufuegen
 						File datei = new File(savefile.getSelectedFile()
 								+ ".txt");
 						cM.save(datei);
+					} else {
+						cM.save(savefile.getSelectedFile());
 					}
+
+					// Action bei Neu
+				} else if (e.getSource() == neu) {
+					cM.getControlProcess().clearList();
 
 					// Action beim Laden
 				} else if (e.getSource() == laden) {
 					chooser.showOpenDialog(getParent());
 					File datei = chooser.getSelectedFile();
-
-					// TableModel erst leeren
-					final int ROW_COUNT = table.getTableModel().getRowCount();
-					for (int i = 0; i < ROW_COUNT; ++i) {
-						table.getTableModel().removeRow(0);
-					}
-
+					cM.getControlProcess().clearList();
 					cM.load(datei);
-					for (int i = 0; i < cM.getControlProcess().getNrContent(); i++) {
-						Vector<String> v = new Vector<String>();
-						v.add(Integer.toString(i + 1));
-						v.add(cM.getControlProcess().get(i).getName());
-						v.add(cM.getControlProcess().get(i)
-								.propertiesToString());
-						table.getTableModel().addRow(v);
-					}
+
+					// Action beim Hinzufuegen
+				} else if (e.getSource() == append) {
+					chooser.showOpenDialog(getParent());
+					File datei = chooser.getSelectedFile();
+					cM.load(datei);
 
 					// Action beim Info
 				} else if (e.getSource() == info) {
@@ -146,8 +151,10 @@ public class ControlDeveloperView extends JFrame {
 				}
 			}
 		};
-		speichern.addActionListener(al);
+		neu.addActionListener(al);
 		laden.addActionListener(al);
+		speichern.addActionListener(al);
+		append.addActionListener(al);
 		info.addActionListener(al);
 	}
 
@@ -165,7 +172,7 @@ public class ControlDeveloperView extends JFrame {
 		return befehleView;
 	}
 
-	public KonfigurationsFensterView getKonfigurationsFenster() {
+	public KonfigurationsfensterView getKonfigurationsFenster() {
 		return konfigurationsFensterView;
 	}
 

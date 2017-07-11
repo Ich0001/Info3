@@ -17,11 +17,9 @@ public class BefehleView extends JPanel {
 	private ControlModel cM;
 	private JList<CommandType> list;
 	private JButton buttonAdd = new JButton("Add");
-	private OurJTable table;
 
-	public BefehleView(ControlModel cM, OurJTable table) {
+	public BefehleView(ControlModel cM) {
 		this.cM = cM;
-		this.table = table;
 		setLayout(new BorderLayout());
 
 		list = new JList<CommandType>(this.cM.getCommandTypes());
@@ -33,8 +31,7 @@ public class BefehleView extends JPanel {
 		JPanel footer = new JPanel();
 		footer.add(buttonAdd);
 		footer.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-		ButtonAddController buttonAddController = new ButtonAddController(list,
-				this.table);
+		ButtonAddController buttonAddController = new ButtonAddController(list);
 		buttonAdd.addActionListener(buttonAddController);
 		add(footer, BorderLayout.SOUTH);
 	}

@@ -8,13 +8,13 @@ import javax.swing.JPanel;
 
 import controller.ButtonSaveController;
 
-public class KonfigurationsFensterView extends JPanel {
+public class KonfigurationsfensterView extends JPanel {
 	private KonfigurationView konfiguration;
 	private JButton buttonSave;
 	private JPanel footer;
-	KonfigurationView konfigurationsFensterIdle = new KonfigurationViewIdle();
+	private KonfigurationView konfigurationsFensterIdle = new KonfigurationViewIdle();
 
-	public KonfigurationsFensterView() {
+	public KonfigurationsfensterView() {
 		konfiguration = konfigurationsFensterIdle;
 
 		buttonSave = new JButton("Save");

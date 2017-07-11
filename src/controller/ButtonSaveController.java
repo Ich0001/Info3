@@ -96,32 +96,15 @@ public class ButtonSaveController implements ActionListener {
 				System.out.println("Fehler in KonfigurationsFensterView :-(");
 			}
 
-			// Setze die geaenderten Inhalte aus der verketteten Liste
-			// in das TableModel um
-			if (konfiguration instanceof KonfigurationViewDirection
-					|| konfiguration instanceof KonfigurationViewGear
-					|| konfiguration instanceof KonfigurationViewRepetition
-					|| konfiguration instanceof KonfigurationViewPause) {
-				ControlDeveloperView
-						.getInstance()
-						.getOurJTable()
-						.getTableModel()
-						.setValueAt(
-								ControlModel
-										.getInstance()
-										.getControlProcess()
-										.get(ControlDeveloperView.getInstance()
-												.getOurJTable()
-												.getSelectedRow())
-										.propertiesToString(),
-								ControlDeveloperView.getInstance()
-										.getOurJTable().getSelectedRow(), 2);
-			}
+			// Informiere das TableModel, dass sich am Inhalt was geaendert hat
+			ControlModel.getInstance().getControlProcess()
+					.fireTableDataChanged();
+
 		} catch (ClassCastException e) {
-			System.out.println("Falsche Auswahl");
+			System.out.println("Falsche Auswahl beim Druecken von 'Save'");
 			ControlDeveloperView.getInstance().println(">>Falsche Auswahl!");
 		} catch (NumberFormatException e) {
-			System.out.println("Scheisse gebaut");
+			System.out.println("Keine oder Falsche Zeichen eingegeben!");
 			ControlDeveloperView.getInstance().println(
 					">>Keine oder Falsche Zeichen eingegeben!");
 		} finally {
