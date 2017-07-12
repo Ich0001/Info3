@@ -10,7 +10,7 @@ import model.ControlModel;
 
 public class KonfigurationViewDirection extends KonfigurationView {
 	private JLabel label1 = new JLabel("Degree: ");
-	private JTextField textField1 = new JTextField(8);
+	private JTextField textField1 = new JTextField(9);
 
 	public KonfigurationViewDirection(ControlModel cM) {
 		super(cM);

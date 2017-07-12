@@ -43,7 +43,6 @@ public class OurJTable extends JTable implements TableModelListener {
 				newKonfigurationView = new KonfigurationViewIdle();
 			}
 		} else {
-			System.out.println("Keine Zeile ausgewaehlt");
 			newKonfigurationView = new KonfigurationViewIdle();
 		}
 		ControlDeveloperView.getInstance().getKonfigurationsFenster()

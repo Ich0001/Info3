@@ -53,10 +53,24 @@ public class ControlDeveloperView extends JFrame {
 		console = new Console();
 		menuBar = new JMenuBar();
 
+		// -- Hier LookAndFeel einstellen
+		// try {
+		// UIManager
+		// .setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		// } catch (ClassNotFoundException e1) {
+		// e1.printStackTrace();
+		// } catch (InstantiationException e1) {
+		// e1.printStackTrace();
+		// } catch (IllegalAccessException e1) {
+		// e1.printStackTrace();
+		// } catch (UnsupportedLookAndFeelException e1) {
+		// e1.printStackTrace();
+		// }
+
 		// Definieren des Frames, und des ContentPanes, das alles im Rahmen
 		// enthaelt.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 50, 800, 500);
+		setBounds(100, 50, 700, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(5, 5));
@@ -103,20 +117,21 @@ public class ControlDeveloperView extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				// Action beim Speichern
 				if (e.getSource() == speichern) {
-					savefile.showSaveDialog(savefile);
+					try {
+						savefile.showSaveDialog(savefile);
 
-					if (!savefile.getSelectedFile().getAbsolutePath()
-							.endsWith(".txt")) { // .txt hinzufuegen
-						File datei = new File(savefile.getSelectedFile()
-								+ ".txt");
-						cM.save(datei);
-					} else {
-						cM.save(savefile.getSelectedFile());
+						if (!savefile.getSelectedFile().getAbsolutePath()
+								.endsWith(".txt")) { // .txt hinzufuegen
+							File datei = new File(savefile.getSelectedFile()
+									+ ".txt");
+							cM.save(datei);
+						} else {
+							cM.save(savefile.getSelectedFile());
+						}
+					} catch (NullPointerException nullPointerException) {
 					}
-
 					// Action bei Neu
 				} else if (e.getSource() == neu) {
 					cM.getControlProcess().clearList();

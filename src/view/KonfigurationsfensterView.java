@@ -43,7 +43,7 @@ public class KonfigurationsfensterView extends JPanel {
 		remove(konfiguration);
 		konfiguration = newKonfiguration;
 		add(konfiguration, BorderLayout.CENTER);
-		repaint();
-		ControlDeveloperView.getInstance().pack();
+		ControlDeveloperView.getInstance().setSize(700, 399);
+		ControlDeveloperView.getInstance().setSize(700, 400);
 	}
 }

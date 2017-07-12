@@ -46,7 +46,16 @@ public class ProgrammAblaufView extends JPanel {
 
 				int index = table.getSelectedRow();
 				if (index >= 0) {
-					cL.remove(table.getSelectedRow());
+					cL.remove(index);
+					// Hier wird die nächste Zeile markiert, die nach dem
+					// loeschen uebrig bleibt
+					if (index < table.getRowCount())
+						table.setRowSelectionInterval(index, index);
+					else if (index == table.getRowCount() && index > 0)
+						table.setRowSelectionInterval(index - 1, index - 1);
+					else
+						;
+
 					ControlDeveloperView.getInstance().println(
 							">>Zeile " + (index + 1) + " geloescht");
 				} else {
@@ -65,16 +74,18 @@ public class ProgrammAblaufView extends JPanel {
 
 				if (index > 0) {
 					cL.moveUp(table.getSelectedRow());
+					table.setRowSelectionInterval(index - 1, index - 1);
 					ControlDeveloperView.getInstance().println(
 							">>Zeile " + (index + 1) + " mit Zeile " + (index)
 									+ " getauscht");
 				} else if (index == 0) {
-					ControlDeveloperView.getInstance().println(
-							">>Zeile " + (index + 1)
-									+ " Kann nicht getauscht werden!");
-				}
-
-				else {
+					ControlDeveloperView
+							.getInstance()
+							.println(
+									">>Zeile "
+											+ (index + 1)
+											+ " Kann nicht nach oben verschoben werden!");
+				} else {
 					ControlDeveloperView.getInstance().println(
 							">>Kein Element ausgewaehlt!");
 				}
@@ -91,16 +102,20 @@ public class ProgrammAblaufView extends JPanel {
 				if (index >= 0
 						&& index != (cM.getControlProcess().getNrContent() - 1)) {
 					cL.moveDown(table.getSelectedRow());
+					table.setRowSelectionInterval(index + 1, index + 1);
 					ControlDeveloperView.getInstance().println(
 							">>Zeile " + (index + 1) + " mit Zeile "
 									+ (index + 2) + " getauscht");
-				} else if (index != -1
+				} else if (index >= 0
 						&& index == (cM.getControlProcess().getNrContent() - 1)) {
-					ControlDeveloperView.getInstance().println(
-							">>Zeile " + (index + 1)
-									+ " Kann nicht getauscht werden!");
+					ControlDeveloperView
+							.getInstance()
+							.println(
+									">>Zeile "
+											+ (index + 1)
+											+ " ist bereits die unterste Zeile und kann deshalb"
+											+ " nicht nach unten verschoben werden!");
 				} else {
-					System.out.println("kein Element ausgewaehlt");
 					ControlDeveloperView.getInstance().println(
 							">>Kein Element ausgewaehlt!");
 				}

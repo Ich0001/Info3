@@ -11,8 +11,8 @@ import model.ControlModel;
 public class KonfigurationViewRepetition extends KonfigurationView {
 	private JLabel label1 = new JLabel("nrSteps: ");
 	private JLabel label2 = new JLabel("nrRepetitions: ");
-	private JTextField textField1 = new JTextField(8);
-	private JTextField textField2 = new JTextField(8);
+	private JTextField textField1 = new JTextField(6);
+	private JTextField textField2 = new JTextField(6);
 
 	public KonfigurationViewRepetition(ControlModel cM) {
 		super(cM);
